@@ -145,7 +145,7 @@ export default function LoginPage() {
 											<Button
 												variant="dark"
 												type="submit"
-												disabled={!isChecked || !isFormValid}
+												disabled={!isFormValid}
 											>
 												Submit
 											</Button>
