@@ -1,0 +1,15 @@
+#carouselExample .carousel-inner img {
+	height: 30rem;
+	object-fit: cover;
+}
+
+#carouselExample .carousel-inner h3 {
+	margin-top: 3rem;
+	text-align: center;
+	color: white;
+	font-weight: bold;
+}
+
+body {
+	background-color: black;
+}
