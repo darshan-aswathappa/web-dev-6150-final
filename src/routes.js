@@ -7,6 +7,7 @@ import HomePage from "pages/home";
 import React from 'react';
 import UpdatePassword from "pages/update-password";
 import PaymentGateway from "pages/payment";
+import Pricing from "pages/pricing";
 
 const router = createBrowserRouter([
 	{
@@ -38,6 +39,11 @@ const router = createBrowserRouter([
 		path: '/payment-gateway',
 		element: <PaymentGateway />,
 		errorElement: <NotFoundPage />,
+	},
+	{
+		path: '/pricing',
+		element: <Pricing />,
+		// errorElement: <NotFoundPage />,
 	}
 ]);
 
