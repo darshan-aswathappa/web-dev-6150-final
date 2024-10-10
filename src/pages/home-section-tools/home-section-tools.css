@@ -1,0 +1,21 @@
+.card{
+    height:490px;
+    margin-top:30px;
+    margin-bottom:30px;
+    text-align: center;
+}
+.section-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 55px;
+    color: #333;
+}
+
+.card:hover{
+    border-color: #d5eded;
+    background-color:  #d5eded;
+}
+.card img{
+    padding:10px;
+}

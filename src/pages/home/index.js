@@ -1,11 +1,13 @@
 import MainLayout from "layout/main";
 import React from "react";
 import HomeSectionWelcome from "../home-section-welcome";
-import HomeSectionCards from "../home-section-cards";
+import HomeSectionStats from "../home-section-stats";
+import HomeSectionTools from "../home-section-tools";
 
 export default function HomePage() {
   return <MainLayout>
     <HomeSectionWelcome />
-    <HomeSectionCards />
+    <HomeSectionTools />
+    <HomeSectionStats />
   </MainLayout>;
 }
