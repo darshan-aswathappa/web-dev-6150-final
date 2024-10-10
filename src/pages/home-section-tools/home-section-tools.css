@@ -1,4 +1,4 @@
-.card{
+.card-tools{
     height:490px;
     margin-top:30px;
     margin-bottom:30px;
@@ -12,10 +12,17 @@
     color: #333;
 }
 
-.card:hover{
-    border-color: #d5eded;
-    background-color:  #d5eded;
+.card-tools:hover{
+    border-color: #19b8b3;
+    background-color: #fafffd;
 }
-.card img{
-    padding:10px;
+
+.card-tools img{
+    padding:15px;
+    transition: transform 0.3s ease-in-out;
 }
+
+.card-img-top:hover {
+    transform: scale(1.1); /* Enlarge image on hover */
+}
+

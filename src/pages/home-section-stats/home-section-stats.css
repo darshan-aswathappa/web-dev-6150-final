@@ -1,6 +1,9 @@
 .section-indent{
     padding:20px 80px !important;
 }
+.card{
+    height: 150px;
+}
 .icon {
     width: 3rem;
     height: 3rem;
