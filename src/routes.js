@@ -8,11 +8,17 @@ import React from 'react';
 import UpdatePassword from "pages/update-password";
 import PaymentGateway from "pages/payment";
 import Pricing from "pages/pricing";
+import HomePageV2 from "pages/home-v2";
 
 const router = createBrowserRouter([
 	{
 		path: '/',
 		element: <HomePage />,
+		errorElement: <NotFoundPage />,
+	},
+	{
+		path: '/home-v2',
+		element: <HomePageV2 />,
 		errorElement: <NotFoundPage />,
 	},
 	{
