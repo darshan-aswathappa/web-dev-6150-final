@@ -1,0 +1,37 @@
+.btn-filled-orange {
+	color: white;
+	background-color: orange;
+	border-color: orange;
+}
+
+.btn-filled-orange:hover {
+	color: white;
+	background-color: orange;
+	border-color: orange;
+	filter: brightness(70%);
+}
+
+figure img {
+	width: 250px;
+	filter: brightness(80%);
+}
+
+figure {
+	margin: 5%;
+}
+
+.figure-caption {
+	color: white;
+}
+
+.additional-content {
+	padding: 50px;
+	text-align: center;
+	background-color: black;
+	color: white;
+	font-size: 3rem;
+}
+
+body {
+	background-color: black;
+}
