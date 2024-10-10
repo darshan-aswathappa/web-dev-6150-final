@@ -1,8 +1,8 @@
 import React from "react";
 // import Nav from "react-bootstrap/Nav";
-import Navbar from "pages/home-v2/navbar";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import Navbar from "components/home-v2/navbar";
 
 export default function Header() {
   return (
@@ -21,7 +21,6 @@ export default function Header() {
     //     </Nav>
     //   </header>
     // </div>
-    <Navbar></Navbar>
-
+    <Navbar/>
   );
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import "./home-section-welcome.css"
+import "style/home-v2/home-section-welcome.css"
 
 const HomeSectionWelcome = () => {
     return (

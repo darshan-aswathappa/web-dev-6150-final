@@ -1,5 +1,5 @@
 import React from 'react';
-import "./home-section-tools.css"
+import "style/home-v2/home-section-tools.css"
 
 const HomeSectionTools = () => {
     const tools = [

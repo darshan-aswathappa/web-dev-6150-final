@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./footer";
 import Header from "./header";
-import VantaBackground from "../pages/home-v2/vanta-background";
+import VantaBackground from "../components/home-v2/vanta-background";
 
 export default function MainLayout({ children }) {
   return (

@@ -1,6 +1,6 @@
 
 import React from 'react'
-import "./navbar.css"
+import "style/home-v2/navbar.css"
 
 const Navbar = () => {
 
