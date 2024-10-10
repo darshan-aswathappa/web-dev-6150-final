@@ -1,7 +1,7 @@
 import React from 'react';
-import "./home-section-hero.css"
+import "./home-section-welcome.css"
 
-const HomeSectionHero = () => {
+const HomeSectionWelcome = () => {
     return (
         <div className="home-section-wrapper ">
 
@@ -18,4 +18,4 @@ const HomeSectionHero = () => {
     )
 }
 
-export default HomeSectionHero
+export default HomeSectionWelcome

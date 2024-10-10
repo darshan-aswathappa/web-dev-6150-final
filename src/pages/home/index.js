@@ -1,9 +1,11 @@
 import MainLayout from "layout/main";
 import React from "react";
-import HomeSectionHero from "../home-section-hero";
+import HomeSectionWelcome from "../home-section-welcome";
+import HomeSectionCards from "../home-section-cards";
 
 export default function HomePage() {
   return <MainLayout>
-    <HomeSectionHero/>
+    <HomeSectionWelcome />
+    <HomeSectionCards />
   </MainLayout>;
 }
