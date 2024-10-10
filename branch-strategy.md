@@ -9,6 +9,8 @@
 2. **Create Feature Branch:**
 
    - Once the `deployment` branch is up to date, create a new `feature` branch from the `deployment` branch. This isolates the new feature development from the main and deployment codebases.
+   - Name for the feature branch would be the ItemId of the issue.
+   - Ex: ItemId = 82472908, feature branch name would be Feature-#82472908
 
 3. **Feature Development and Code Review:**
 
