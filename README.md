@@ -1,70 +1,64 @@
-# Getting Started with Create React App
+# Group Assignment 5 - Group 8
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Project Information
 
-## Available Scripts
+GitHub repo: https://github.com/darshan-aswathappa/web-dev-6150-final
 
-In the project directory, you can run:
+Deployed on Vercel: https://web-dev-6150-final.vercel.app
 
-### `npm start`
+To run the code and start a development server:
+`npm install` `npm start`
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Please note for Node.js version requirements.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Group members (in lexicographic order):
 
-### `npm test`
+|        Name        |             EMail              |   NUID    | Branch              |
+|:------------------:|:------------------------------:|:---------:|---------------------|
+| Darshan Aswathappa | aswathappa.d@northeastern.edu  | 002339267 | Feature-#82472908   |
+|   James Z. Zhang   |  zhang.jame@northeastern.edu   | 002475939 | jameszhang          |
+|   Nireeksha Huns   |    huns.n@northeastern.edu     | 002054783 | Feature-nireeksha   |
+|    Yanqing Lou     |    lou.yan@northeastern.edu    | 002083406 | Feature-yanqinglou  |
+|    Zhilong Shen    |   shen.zhil@northeastern.edu   | 002470907 | Feature-zhilongshen |
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Requirements Checklist
 
-### `npm run build`
+> 1. Create the **login page** and **home page/landing page** based on your project topic.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+We have built 8 pages, including [**login page**](https://web-dev-6150-final.vercel.app/sign-in) and [**home page/landing page**](https://web-dev-6150-final.vercel.app/).
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> 2. It must have validation for the Login Page, and validation should be the same as Assignment 3 for fields that are part of the Login page.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Validation are implemented both on [**login page**](https://web-dev-6150-final.vercel.app/sign-in) and [**registration page**](https://web-dev-6150-final.vercel.app/register).
+`northeastern.edu` domain is required.
 
-### `npm run eject`
+> 3. Usage of 16+ bootstrap components
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Used React Bootstrap components include: \[1\] `Container` \[2\] `Rol` \[3\] `Col` \[4\] `Button` \[5\] `Form` 
+\[6\] `Form.Group` \[7\] `Form.Control` \[8\] `Form.Label`
+\[9\] `InputGroup` \[10\] `Badge`
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Used native Bootstrap components include: 
++ Navbar: `navbar` `navbar-expand-lg` `navbar-brand` `navbar-toggler` `navbar-nav` `nav-link`
++ Carousel: `carousel` `carousel-inner` `carousel-item` `carousel-control-prev` `carousel-control-next`
++ Card: `card` `card-body` `card-title` `card-text`
++ Misc: `lead` 
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+>4. You are allowed to use the existing Bootstrap templates, but you must customize them.
+>5. Do not copy-paste existing Templates as it is. **You have to modify the existing template when you use it**; assignment scores will be impacted by doing so.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+Templates were used seldom and always modified to serve our project and fit the design.
 
-## Learn More
+>6. The website **must** be on **every device**.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+All the pages are responsive and tested on different devices. 
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+>7. The Readme file must contain the purpose of the website and a list of bootstrap components used
+>   1. Every team member must work on the group assignments, and which part of the assignment worked on should be clear and **reflected on GitHub History**
+>8. There **MUST** be **one** Group project GitHub repository with individual team member branches created and **one MAIN** branch where all changes are merged
 
-### Code Splitting
+Individuals' contributions and GitHub branches and the private GitHub repo link are listed in the leading sections on this document.
+All changes are merged into `main` branch for assignment submission.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+>9. **zip** file must be submitted on **CANVAS**, and the GitHub URL of the group assignment in the canvas remarks. also, put the team members’ names while submitting the assignment, including the project name.
+>10. Do not change the project topic after submission of the project topic and tech stack unless you discuss this with Professor or TAs, as it will be validated at the end for the final project demo and presentation. If the project topic is changed without permission, it will result in -a 20% mark reduction
