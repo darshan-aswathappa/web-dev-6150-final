@@ -16,7 +16,7 @@ const Cards = () => {
 			<div className="container mt-4 mb-5">
 				<div className="row">
 					<div className="col-md-3 col-12 mb-3">
-						<div className="card" style={{ width: '100%' }}>
+						<div className="" style={{ width: '100%' }}>
 							<img src={accurate} className="card-img-top" alt="..." />
 							<div className="card-body">
 								<h5 className="card-title">Accurate Role Selection</h5>
@@ -30,7 +30,7 @@ const Cards = () => {
 						</div>
 					</div>
 					<div className="col-md-3 col-12 mb-3">
-						<div className="card" style={{ width: '100%' }}>
+						<div className="" style={{ width: '100%' }}>
 							<img src={muscle} className="card-img-top" alt="..." />
 							<div className="card-body">
 								<h5 className="card-title">Consolidated Résumé Craft</h5>
@@ -44,7 +44,7 @@ const Cards = () => {
 						</div>
 					</div>
 					<div className="col-md-3 col-12 mb-3">
-						<div className="card" style={{ width: '100%' }}>
+						<div className="" style={{ width: '100%' }}>
 							<img src={developing} className="card-img-top" alt="..." />
 							<div className="card-body">
 								<h5 className="card-title">Effective Job Application</h5>
@@ -58,7 +58,7 @@ const Cards = () => {
 						</div>
 					</div>
 					<div className="col-md-3 col-12 mb-3">
-						<div className="card" style={{ width: '100%' }}>
+						<div className="" style={{ width: '100%' }}>
 							<img src={smart} className="card-img-top" alt="..." />
 							<div className="card-body">
 								<h5 className="card-title">Smart Follow-Up Offer</h5>
