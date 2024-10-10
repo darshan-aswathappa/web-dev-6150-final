@@ -1,70 +1,67 @@
-# Getting Started with Create React App
+# Resume Reviewer - Resume Reviewer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Purpose of the Website
 
-## Available Scripts
+**ResumeReviewer** is an AI-driven platform designed to assist job seekers in refining their resumes and improving their chances of landing a job. It offers features such as AI-based role selection, resume crafting suggestions, and application tracking, empowering users with tools to stand out in the competitive job market.
 
-In the project directory, you can run:
+### Key Features:
 
-### `npm start`
+- Role-based suggestions for optimal job targeting
+- Detailed AI feedback on resume quality and content
+- Tools for refining job applications
+- Smart follow-up suggestions to maximize your chances of success
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+ResumeReviewer helps job seekers at all career stages to polish their resumes, align their experience with desired roles, and improve the quality of job applications.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
-### `npm test`
+## Bootstrap Components Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Layout Components:
 
-### `npm run build`
+1. **Container**: Used for responsive fixed-width and fluid layouts (`container`, `container-fluid`).
+2. **Row**: A flexbox container for organizing content into horizontal rows (`row`).
+3. **Column**: Flexible layout columns to control the width of content across different screen sizes (`col-md-3`, `col-12`).
+4. **Card**: A versatile container for content, images, and actions (`card`, `card-body`, `card-title`, `card-text`, `card-img-top`).
+5. **Media Object**: Used to align images or media alongside text (`media`, `media-body`).
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Content and Text Utilities:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+6. **Typography Utilities**: Used for heading, paragraph, and muted text (`h1`, `h5`, `text-muted`).
+7. **List Group**: Displays items in a list format (`list-group`, `list-group-item`).
+8. **Badge**: Small labeling component to display notifications or tags (`badge`, `badge-secondary`).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### Buttons and Interactions:
 
-### `npm run eject`
+9. **Button**: Interactive clickable buttons for actions like form submission or navigation (`btn`, `btn-primary`, `btn-filled-orange`).
+10. **Button Group**: For grouping multiple buttons together in a single line (`btn-group`).
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Forms and Inputs:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+11. **Form**: Used for creating interactive forms, with Bootstrap styling for inputs and buttons (`form`, `form-group`).
+12. **Form Control**: Standard Bootstrap input fields for user data entry (`form-control`).
+13. **Input Group**: Groups inputs and buttons together, often used for search fields (`input-group`, `input-group-text`).
+14. **Checkbox**: For multi-select options in forms (`form-check`, `form-check-input`, `form-check-label`).
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### Spacing and Sizing Utilities:
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+15. **Margin and Padding Utilities**: Applied to control spacing between elements (`mt-4`, `mb-5`, `ms-2`, `p-3`).
+16. **Width Utilities**: Adjusts the width of elements for responsiveness (`w-50`, `w-100`).
+17. **Height Utilities**: Controls the height of components like divs or images (`h-100`, `vh-100`).
 
-## Learn More
+### Flexbox and Alignment:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+18. **Flex Utilities**: Flexbox for aligning and distributing space in containers (`d-flex`, `justify-content-center`, `align-items-center`).
+19. **Vertical Alignment**: Aligns content vertically within a flex container (`align-items-center`, `align-self-start`).
+20. **Text Alignment**: Centers text or aligns it to the left or right within its container (`text-center`, `text-left`, `text-right`).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+---
 
-### Code Splitting
+## Getting Started
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+To run this project locally:
 
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+1. Clone the repository to your local machine:
+   ```bash
+   git clone https://github.com/darshan-aswathappa/web-dev-6150-final.git
+   ```
