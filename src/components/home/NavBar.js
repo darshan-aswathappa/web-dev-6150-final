@@ -22,7 +22,7 @@ const NavBar = () => {
 				<div className="collapse navbar-collapse" id="navbarSupportedContent">
 					<div className="navbar-nav me-auto mb-2 mb-lg-0 d-md-flex justify-content-md-between w-100">
 						<div className='flex d-md-flex'>
-							<a className="nav-link" aria-current="page" href="/">
+							<a className="nav-link me-2" aria-current="page" href="/">
 								Home
 							</a>
 							<a className="nav-link" aria-current="page" href="/pricing">

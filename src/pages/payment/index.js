@@ -36,16 +36,16 @@ export default function PaymentGateway() {
   const validateForm = () => {
     let newErrors = {};
     if (!cardNumberRef.current.value || !isValidCardNumber(cardNumberRef.current.value)) {
-      newErrors.cardNumber = 'Invalid card number.';
+      newErrors.cardNumber = 'Invalid card number';
     }
-    if (!expiryRef.current.value) {
-      newErrors.expiry = 'Expiry date is required.';
+    if (!expiryRef.current.value || !isValidExpiry(expiryRef.current.value)) {
+      newErrors.expiry = 'Invalid expiry date';
     }
     if (!cvcRef.current.value || cvcRef.current.value.length !== 3) {
-      newErrors.cvc = 'Invalid CVC.';
+      newErrors.cvc = 'Invalid CVC';
     }
     if (!nameRef.current.value) {
-      newErrors.name = 'Name is required.';
+      newErrors.name = 'Name is required';
     }
 
     setErrors(newErrors);
@@ -54,8 +54,72 @@ export default function PaymentGateway() {
   };
 
   const isValidCardNumber = (number) => {
+    let input = number.replace(/\D/g, '')
     const cardNumberRegex = /^[0-9]{16}$/;
-    return cardNumberRegex.test(number);
+    return cardNumberRegex.test(input);
+  };
+
+  const formatCardNumber = () => {
+    let input = cardNumberRef.current.value;
+    input = input.replace(/\D/g, '');
+
+    if (input.length === 0) {
+      input = '';
+    } else if (input.length <= 4) {
+      input = `${input}`;
+    } else if (input.length <= 8) {
+      input = `${input.substring(0, 4)} ${input.substring(4)}`;
+    } else if (input.length <= 12) {
+      input = `${input.substring(0, 4)} ${input.substring(4,8)} ${input.substring(8)}`;
+    } else {
+      input = `${input.substring(0, 4)} ${input.substring(4,8)} ${input.substring(8,12)} ${input.substring(12,16)}`;
+    }
+
+    cardNumberRef.current.value = input;
+  }
+
+  const handleCardNumberChange = () => {
+    formatCardNumber();
+    validateForm();
+  };
+
+  const isValidExpiry = () => {
+    let input = cardNumberRef.current.value;
+    input = input.replace(/\D/g, '');
+    if (input.length !== 4) {
+      return false;
+    }
+    let m = parseInt(input.substring(0,2));
+    if (m<1 || m>12) {
+      return false;
+    }
+    return true;
+  }
+
+  const formatExpiry = () => {
+    let input = expiryRef.current.value;
+    input = input.replace(/\D/g, '');
+    if (input.length >= 2) {
+      input = `${input.substring(0,2)}/${input.substring(2,4)}`
+    }
+    expiryRef.current.value = input;
+  };
+
+  const handleExpiryChange = () => {
+    formatExpiry();
+    validateForm();
+  };
+
+  const formatCVC = () => {
+    let input = cvcRef.current.value;
+    input = input.replace(/\D/g, '');
+    input = input.substring(0,3);
+    cvcRef.current.value = input;
+  };
+
+  const handleCVCChange = () => {
+    formatCVC();
+    validateForm();
   };
 
   return (
@@ -75,7 +139,7 @@ export default function PaymentGateway() {
                     type="text"
                     placeholder="0000 0000 0000 0000"
                     ref={cardNumberRef}
-                    onChange={validateForm}
+                    onChange={handleCardNumberChange}
                   />
                 </InputGroup>
                 {errors.cardNumber && <div className="error">{errors.cardNumber}</div>}
@@ -87,9 +151,9 @@ export default function PaymentGateway() {
                     <Form.Label>Expiry Date</Form.Label>
                     <Form.Control
                       type="text"
-                      placeholder="MM / YY"
+                      placeholder="MM/YY"
                       ref={expiryRef}
-                      onChange={validateForm}
+                      onChange={handleExpiryChange}
                     />
                     {errors.expiry && <div className="error">{errors.expiry}</div>}
                   </Form.Group>
@@ -101,7 +165,7 @@ export default function PaymentGateway() {
                       type="text"
                       placeholder="CVC"
                       ref={cvcRef}
-                      onChange={validateForm}
+                      onChange={handleCVCChange}
                     />
                     {errors.cvc && <div className="error">{errors.cvc}</div>}
                   </Form.Group>

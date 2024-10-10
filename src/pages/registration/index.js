@@ -68,7 +68,7 @@ export default function RegistrationPage() {
 		if (!confirmPasswordIDRef.current.value) {
 			newErrors.confirmPassword = 'Field cannot be empty';
 		} else if (
-			passwordRef.current.value != confirmPasswordIDRef.current.value
+			passwordRef.current.value !== confirmPasswordIDRef.current.value
 		) {
 			newErrors.confirmPassword = 'Password must match';
 		}
@@ -79,11 +79,11 @@ export default function RegistrationPage() {
 	};
 
 	const isValidName = name => {
-		const nameRegex = /^[A-Za-z]+$/;
+		const nameRegex = /^[A-Za-z.\- ]+$/;
 		return nameRegex.test(name);
 	};
 	const isValidEmail = email => {
-		const emailRegex = /^\S+@northeastern\.edu$/;
+		const emailRegex = /^[a-zA-Z0-9._%+-]+@northeastern\.edu$/;
 		return emailRegex.test(email);
 	};
 
