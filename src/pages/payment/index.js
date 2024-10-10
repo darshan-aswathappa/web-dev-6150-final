@@ -1,8 +1,10 @@
 import React, { useState, useRef } from 'react';
 import { Container, Row, Col, Button, Form, InputGroup } from 'react-bootstrap';
 import MainLayout from 'layout/main';
+import 'style/pricing/pricing.css';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from 'react-router-dom';
-import 'style/PaymentFlow/pricing.css';
 
 export default function PaymentGateway() {
   const cardNumberRef = useRef();
@@ -11,17 +13,16 @@ export default function PaymentGateway() {
   const nameRef = useRef();
   const [errors, setErrors] = useState({});
   const [isFormValid, setIsFormValid] = useState(false);
+  const notify = () => toast('Subscribed successfully!!');
   const navigate = useNavigate();
-
-  const handleNavigation = () => {
-    // show pop up
-    };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!validateForm()) return;
-    handleNavigation();
     clearForm();
+    // toast not working so i will redirect for now
+    navigate("/");
+    notify();
   };
 
   const clearForm = () => {
@@ -53,7 +54,6 @@ export default function PaymentGateway() {
   };
 
   const isValidCardNumber = (number) => {
-    // Basic card number validation, replace with Luhn Algorithm if necessary
     const cardNumberRegex = /^[0-9]{16}$/;
     return cardNumberRegex.test(number);
   };

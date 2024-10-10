@@ -12,10 +12,10 @@ const Video = () => {
 				allowfullscreen
 			></iframe>
 			<div className="content">
-				<p className="title-big">Select. Apply. Offer.</p>
+				<p className="title-big">Select. Apply. Review.</p>
 				<p className="title-big-colorful">With Precision AI™</p>
 				<p className="title-med">
-					The rollout of our new Secure AI by Design portfolio has begun!
+					The rollout of our new Resume Reviewer AI has begun!
 				</p>
 			</div>
 		</div>
