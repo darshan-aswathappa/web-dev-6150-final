@@ -10,7 +10,7 @@ const HomeSectionStats = () => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col">
-                                <h5 className="card-title text-uppercase text-muted mb-0">Traffic</h5>
+                                <h5 className="card-title text-uppercase text-muted mb-0">Visits</h5>
                                 <span className="h2 font-weight-bold mb-0">350,897</span>
                             </div>
                             <div className="col-auto">
@@ -52,7 +52,7 @@ const HomeSectionStats = () => {
                     <div className="card-body">
                         <div className="row">
                             <div className="col">
-                                <h5 className="card-title text-uppercase text-muted mb-0">Sales</h5>
+                                <h5 className="card-title text-uppercase text-muted mb-0">Members</h5>
                                 <span className="h2 font-weight-bold mb-0">924</span>
                             </div>
                             <div className="col-auto">
