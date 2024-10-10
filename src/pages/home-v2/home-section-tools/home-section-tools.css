@@ -1,0 +1,28 @@
+.card-tools{
+    height:490px;
+    margin-top:30px;
+    margin-bottom:30px;
+    text-align: center;
+}
+.section-header {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 55px;
+    color: #333;
+}
+
+.card-tools:hover{
+    border-color: #19b8b3;
+    background-color: #fafffd;
+}
+
+.card-tools img{
+    padding:15px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.card-img-top:hover {
+    transform: scale(1.1); /* Enlarge image on hover */
+}
+
