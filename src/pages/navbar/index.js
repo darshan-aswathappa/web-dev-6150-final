@@ -1,11 +1,11 @@
 
 import React from 'react'
-// import "./navbar.css"
+import "./navbar.css"
 
 const Navbar = () => {
 
     return (
-        <nav className="navbar navbar-expand-lg bg-body-tertiary">
+        <nav className="navbar navbar-expand-lg bg-body-tertiary fixed-top">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse"
