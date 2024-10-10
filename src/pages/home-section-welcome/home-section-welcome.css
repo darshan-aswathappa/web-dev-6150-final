@@ -43,8 +43,8 @@
     font-weight: 600;
     line-height: 1.1;
     color: #19b8b3;
-    background: linear-gradient(180deg, #1ae8e3, #17d2cd); /* 渐变颜色 */
-    -webkit-background-clip: text; /* 让背景图像剪切为文字形状 */
+    background: linear-gradient(180deg, #1ae8e3, #17d2cd);
+    -webkit-background-clip: text; /* Clip the background image to the shape of the text */
     -webkit-text-fill-color: transparent;
     margin-top:-55px;
     text-align: center;
@@ -57,8 +57,8 @@
     font-weight: 600;
     line-height: 1.1;
     color: #35b2e6;
-    background: linear-gradient(180deg, #57d3fb, #1fe6e6);/* 渐变颜色 */
-    -webkit-background-clip: text; /* 让背景图像剪切为文字形状 */
+    background: linear-gradient(180deg, #57d3fb, #1fe6e6);
+    -webkit-background-clip: text;/* Clip the background image to the shape of the text */
     -webkit-text-fill-color: transparent;
 }
 

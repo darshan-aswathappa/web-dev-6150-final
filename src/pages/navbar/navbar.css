@@ -1,12 +1,12 @@
 .nav-item:hover .nav-link {
-    color: orange; /* change color */
+    color: orange;
 }
 
 .nav-item{
   margin-left:10px;
 }
 .navbar-nav {
-    margin-left: auto; /* 确保菜单项向右对齐 */
+    margin-left: auto; /* Ensure menu items are right-aligned */
 }
 
 .navbar{
