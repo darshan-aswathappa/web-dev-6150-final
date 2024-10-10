@@ -6,6 +6,7 @@ import ForgotPasswordPage from "pages/forgot-password";
 import HomePage from "pages/home";
 import React from 'react';
 import UpdatePassword from "pages/update-password";
+import PaymentGateway from "pages/payment";
 
 const router = createBrowserRouter([
 	{
@@ -33,6 +34,11 @@ const router = createBrowserRouter([
 		element: <UpdatePassword />,
 		errorElement: <NotFoundPage />,
 	},
+	{
+		path: '/payment-gateway',
+		element: <PaymentGateway />,
+		errorElement: <NotFoundPage />,
+	}
 ]);
 
 export default router;
