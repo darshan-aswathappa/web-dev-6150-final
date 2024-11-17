@@ -1,293 +1,70 @@
 import MainLayout from 'layout/main';
-import React, { useRef, useState } from 'react';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import { Eye, EyeSlash } from 'react-bootstrap-icons';
+import React from 'react';
+import { useForm } from 'react-hook-form';
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-import 'style/RegistrationFlow/index.css';
+const schema = z.object({
+	username: z.string().min(1).max(10),
+	email: z.string().email(),
+	password: z.string().min(8),
+});
 
 export default function RegistrationPage() {
-	const emailIDRef = useRef();
-	const passwordRef = useRef();
-	const firstNameRef = useRef();
-	const lastNameRef = useRef();
-	const confirmPasswordIDRef = useRef();
-	const [isChecked, setIsChecked] = useState(false);
-	const [errors, setErrors] = useState({});
-	const [isFormValid, setIsFormValid] = useState(false);
-	const [showPassword, setShowPassword] = useState(false);
+	const { register, handleSubmit, formState: { errors } } = useForm({resolver: zodResolver(schema)});
 
-	const handleCheckboxChange = e => {
-		setIsChecked(e.target.checked);
+	const onSubmit = (data) => {
+		console.log(data);
 	};
 
-	const handleSubmit = e => {
-		e.preventDefault();
-		if (!validateForm()) return;
+	return <MainLayout>
+		<div className="flex flex-col lg:flex-row h-screen p-12 bg-[#f2f4f6]">
+			<div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-teal-100 to-teal-400 flex-col justify-between items-start p-8 text-center text-white rounded-l-lg">
+				<h1 className="text-3xl font-bold mb-4 text-left">
+					Blastlogohere
+				</h1>
+				<p className="text-4xl mb-8 text-left font-extrabold leading-snug">
+					<span className="block">Ensure a Fast and</span>
+					<span className="block">Successful Journey</span>
+					<span className="block font-normal">To your Next Career Move</span>
+				</p>
 
-		console.log(firstNameRef.current.value);
-		console.log(lastNameRef.current.value);
-		console.log(emailIDRef.current.value);
-		console.log(passwordRef.current.value);
-		console.log(confirmPasswordIDRef.current.value);
-		console.log(isChecked);
+				<ul className="space-y-4 text-left">
+					<li className="flex items-center">
+						<span className="material-icons mr-2">check_circle</span>
+						2X More Qualified Job Matches
+					</li>
+					<li className="flex items-center">
+						<span className="material-icons mr-2">check_circle</span>
+						60% Time Savings in Job Searches
+					</li>
+					<li className="flex items-center">
+						<span className="material-icons mr-2">check_circle</span>
+						50% More Interview Invites
+					</li>
+				</ul>
+			</div>
 
-		emailIDRef.current.value = '';
-		passwordRef.current.value = '';
-		firstNameRef.current.value = '';
-		lastNameRef.current.value = '';
-		confirmPasswordIDRef.current.value = '';
-
-		setIsChecked(false);
-		setErrors({});
-	};
-
-	const validateForm = () => {
-		let newErrors = {};
-		if (!emailIDRef.current.value) {
-			newErrors.email = 'Use email with domain @northeastern.edu';
-		} else if (!isValidEmail(emailIDRef.current.value)) {
-			newErrors.email = 'Invalid email format';
-		}
-
-		if (!firstNameRef.current.value) {
-			newErrors.firstName = 'First Name is a mandatory field';
-		} else if (!isValidName(firstNameRef.current.value)) {
-			newErrors.firstName = 'Invalid name format';
-		}
-
-		if (!lastNameRef.current.value) {
-			newErrors.lastName = 'Last Name is a mandatory field';
-		} else if (!isValidName(lastNameRef.current.value)) {
-			newErrors.lastName = 'Invalid name format';
-		}
-
-		if (!confirmPasswordIDRef.current.value) {
-			newErrors.confirmPassword = 'Field cannot be empty';
-		} else if (
-			passwordRef.current.value != confirmPasswordIDRef.current.value
-		) {
-			newErrors.confirmPassword = 'Password must match';
-		}
-
-		setErrors(newErrors);
-		setIsFormValid(Object.keys(newErrors).length === 0);
-		return Object.keys(newErrors).length === 0;
-	};
-
-	const isValidName = name => {
-		const nameRegex = /^[A-Za-z]+$/;
-		return nameRegex.test(name);
-	};
-	const isValidEmail = email => {
-		const emailRegex = /^\S+@northeastern\.edu$/;
-		return emailRegex.test(email);
-	};
-
-	const togglePasswordVisibility = () => {
-		setShowPassword(!showPassword);
-	};
-
-	return (
-		<MainLayout>
-			<Container fluid>
-				<Row className="justify-content-center">
-					<Col sm={8} xs={12} lg={6} className="py-4 px-5">
-						<div className="left-image-container d-none d-lg-block">
-							<img src="https://i.pinimg.com/736x/a0/37/18/a03718b2f8bb93f22bc799b58ffc33de.jpg" />
-						</div>
-					</Col>
-					<Col
-						sm={8}
-						xs={12}
-						lg={6}
-						className="py-4 d-flex flex-column justify-content-between"
-					>
-						<div className="logo-image">
-							<img src="./assets/logos/windows.png" width={40} height={40} />
-						</div>
-						<div>
-							<Row className="registration-form-container-top-row">
-								<h2>Create an account</h2>
-								<p>
-									Already have an account? <a href="/sign-in">Log in</a>
-								</p>
-							</Row>
-							<Row>
-								<div className="login-form-container">
-									<Form onSubmit={handleSubmit} className="form-container">
-										{/* First Name */}
-										<Form.Group className="mb-3" controlId="formBasicFirstName">
-											<Form.Label>First Name</Form.Label>
-											<Form.Control
-												className="form-control"
-												type="text"
-												name="firstName"
-												placeholder="Enter First Name"
-												ref={firstNameRef}
-												onChange={validateForm}
-											/>
-											{errors.firstName && (
-												<div className="error">{errors.firstName}</div>
-											)}
-										</Form.Group>
-										{/* Last Name */}
-										<Form.Group className="mb-3" controlId="formBasicLastName">
-											<Form.Label>Last Name</Form.Label>
-											<Form.Control
-												className="form-control"
-												type="text"
-												name="lastName"
-												placeholder="Enter Last Name"
-												ref={lastNameRef}
-												onChange={validateForm}
-											/>
-											{errors.lastName && (
-												<div className="error">{errors.lastName}</div>
-											)}
-										</Form.Group>
-										<Form.Group className="mb-3" controlId="formBasicEmail">
-											<Form.Label>Email address</Form.Label>
-											<Form.Control
-												className="form-control"
-												type="email"
-												name="email"
-												placeholder="Enter email"
-												ref={emailIDRef}
-												onChange={validateForm}
-											/>
-											{errors.email && (
-												<div className="error">{errors.email}</div>
-											)}
-										</Form.Group>
-										{/* Password */}
-										<Form.Group className="mb-3" controlId="formBasicPassword">
-											<Form.Label>Password</Form.Label>
-											<div className="password-container position-relative">
-												<Form.Control
-													type={showPassword ? 'text' : 'password'}
-													placeholder="Password"
-													name="password"
-													ref={passwordRef}
-													style={{ width: '100%' }}
-													onChange={validateForm}
-												/>
-												{errors.password && (
-													<div className="error">{errors.password}</div>
-												)}
-												<button
-													type="button"
-													className="password-toggle"
-													onClick={togglePasswordVisibility}
-													style={{
-														position: 'absolute',
-														right: '10px',
-														top: '50%',
-														transform: 'translateY(-50%)',
-														background: 'none',
-														border: 'none',
-													}}
-												>
-													{showPassword ? (
-														<EyeSlash size={20} />
-													) : (
-														<Eye size={20} />
-													)}
-												</button>
-											</div>
-										</Form.Group>
-										{/* Confirm Password */}
-										<Form.Group
-											className="mb-3"
-											controlId="formBasicConfirmPassword"
-										>
-											<Form.Label>Confirm Password</Form.Label>
-											<div className="password-container position-relative">
-												<Form.Control
-													type={showPassword ? 'text' : 'password'}
-													name="confirmPassword"
-													placeholder="Password"
-													ref={confirmPasswordIDRef}
-													style={{ width: '100%' }}
-													onChange={validateForm}
-												/>
-												{errors.confirmPassword && (
-													<div className="error">{errors.confirmPassword}</div>
-												)}
-											</div>
-										</Form.Group>
-										<Form.Group className="mb-3" controlId="formBasicCheckbox">
-											<Form.Check
-												type="checkbox"
-												label="Agree to terms and conditions?"
-												onChange={handleCheckboxChange}
-												checked={isChecked}
-											/>
-										</Form.Group>
-										<div className="d-grid">
-											<Button
-												variant="dark"
-												type="submit"
-												disabled={!isChecked || !isFormValid}
-											>
-												Submit
-											</Button>
-											<hr />
-											<p className="text-center text-muted m-0 p-0">
-												Register with
-											</p>
-											<div className="d-flex flex-row">
-												<Button
-													className="mt-2 w-100 mx-1"
-													type="button"
-													variant="light"
-												>
-													<div
-														id="google-button-container"
-														className="d-flex justify-content-center align-items-center"
-													>
-														<img
-															className="mx-1"
-															src="./assets/logos/glogo.png"
-															width={25}
-															height={25}
-															alt="Google Logo"
-														/>
-													</div>
-												</Button>
-												<Button
-													className="mt-2 w-100 mx-1"
-													type="button"
-													variant="light"
-												>
-													<div
-														id="facebook-button-container"
-														className="d-flex justify-content-center align-items-center"
-													>
-														<img
-															className="mx-1"
-															src="./assets/logos/facebook.png"
-															width={25}
-															height={25}
-															alt="Facebook Logo"
-														/>
-													</div>
-												</Button>
-											</div>
-										</div>
-									</Form>
-								</div>
-							</Row>
-						</div>
-						<Row className="registration-form-container-top-row pt-3">
-							<a href="/">Back to Home 🏠 ⬅️</a>
-						</Row>
-					</Col>
-				</Row>
-			</Container>
-		</MainLayout>
-	);
+			<div className="w-full lg:w-1/2 flex flex-col  justify-around items-center bg-white p-10 rounded-r-lg">
+				<h2 className="text-2xl font-bold mb-4">Welcome to blast</h2>
+				<form className="w-full max-w-sm" onSubmit={handleSubmit(onSubmit)}>
+					<input className='bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("email")} type='text' placeholder='Email' />
+					{errors.email && (<div className="flex items-start text-red-500 font-medium">{errors.email.message}</div>)}
+					<input className='mt-3 bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("username")} type='text' placeholder='Username' />
+					{errors.username && (<div className="flex items-start text-red-500 font-medium">{errors.username.message}</div>)}
+					<input className='mt-3 bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("password")} type='password' placeholder='Password' />
+					{errors.password && (<div className="flex items-start text-red-500 font-medium">{errors.password.message}</div>)}
+					<button className="w-full py-2 px-4 mt-4 bg-black text-white rounded font-bold">
+						SIGN UP
+					</button>
+					<p className='text-center mt-6 text-sm'>
+						By continuing, you agree to the Jobright <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
+					</p>
+				</form>
+				<button className="w-[400px] mt-4 text-black font-normal border rounded flex items-center justify-center hover:bg-gray-100 py-2">
+					Already a member? <span className="font-bold ml-1">Sign in now</span>
+				</button>
+			</div>
+		</div>
+	</MainLayout>
 }
