@@ -20,33 +20,32 @@ export default function RegistrationPage() {
 	return <MainLayout>
 		<div className="flex flex-col lg:flex-row h-screen p-12 bg-[#f2f4f6]">
 			<div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-teal-100 to-teal-400 flex-col justify-between items-start p-8 text-center text-white rounded-l-lg">
-				<h1 className="text-3xl font-bold mb-4 text-left">
-					Blastlogohere
+				<h1 className="text-3xl font-bold mb-4 text-left text-black">
+					NEU Course bot
 				</h1>
-				<p className="text-4xl mb-8 text-left font-extrabold leading-snug">
+				<p className="text-4xl mb-8 text-left font-extrabold leading-snug text-black">
 					<span className="block">Ensure a Fast and</span>
 					<span className="block">Successful Journey</span>
-					<span className="block font-normal">To your Next Career Move</span>
+					<span className="block font-normal">To picking your Next Coursework</span>
 				</p>
 
-				<ul className="space-y-4 text-left">
+				<ul className="space-y-4 text-left text-black">
 					<li className="flex items-center">
-						<span className="material-icons mr-2">check_circle</span>
-						2X More Qualified Job Matches
+						<span className="material-icons mr-2">⏳</span>
+						Know more about professors
 					</li>
 					<li className="flex items-center">
-						<span className="material-icons mr-2">check_circle</span>
-						60% Time Savings in Job Searches
+						<span className="material-icons mr-2">⏳</span>
+						60% Time Savings in Syllabus Checks
 					</li>
 					<li className="flex items-center">
-						<span className="material-icons mr-2">check_circle</span>
-						50% More Interview Invites
+						<span className="material-icons mr-2">⏳</span>
+						Personalized course picks based on resume
 					</li>
 				</ul>
 			</div>
-
 			<div className="w-full lg:w-1/2 flex flex-col  justify-around items-center bg-white p-10 rounded-r-lg">
-				<h2 className="text-2xl font-bold mb-4">Welcome to blast</h2>
+				<h2 className="text-2xl font-bold mb-4">Welcome to NEU course bot</h2>
 				<form className="w-full max-w-sm" onSubmit={handleSubmit(onSubmit)}>
 					<input className='bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("email")} type='text' placeholder='Email' />
 					{errors.email && (<div className="flex items-start text-red-500 font-medium">{errors.email.message}</div>)}
