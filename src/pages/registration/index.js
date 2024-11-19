@@ -3,6 +3,8 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import useAuthStore from 'store/authStore';
+import { useNavigate } from 'react-router-dom';
 
 const schema = z.object({
 	username: z.string().min(1).max(10),
@@ -12,10 +14,18 @@ const schema = z.object({
 
 export default function RegistrationPage() {
 	const { register, handleSubmit, formState: { errors } } = useForm({resolver: zodResolver(schema)});
+	const navigate = useNavigate();
+	const { signUp, error, isLoading } = useAuthStore();
 
-	const onSubmit = (data) => {
-		console.log(data);
+	const onSubmit = async (data) => {
+		try {
+			await signUp(data.email, data.password, data.username);
+			navigate("/pricing");
+		} catch (error) {
+			console.log(error);
+		}
 	};
+
 
 	return <MainLayout>
 		<div className="flex flex-col lg:flex-row h-screen p-12 bg-[#f2f4f6]">
@@ -57,7 +67,7 @@ export default function RegistrationPage() {
 						SIGN UP
 					</button>
 					<p className='text-center mt-6 text-sm'>
-						By continuing, you agree to the Jobright <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
+						By continuing, you agree to the mycomp <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
 					</p>
 				</form>
 				<button className="w-[400px] mt-4 text-black font-normal border rounded flex items-center justify-center hover:bg-gray-100 py-2">
