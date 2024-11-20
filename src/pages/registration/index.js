@@ -21,7 +21,7 @@ export default function RegistrationPage() {
 		try {
 			await signUp(data.email, data.password, data.username);
 			console.log("Sign up successfull!");
-			navigate("/pricing");
+			navigate("/verify-email");
 		} catch (error) {
 			console.log(error);
 		}

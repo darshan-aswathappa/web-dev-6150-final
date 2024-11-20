@@ -19,7 +19,7 @@ export default function VerifyEmail(){
         e.preventDefault();
         try {
             await verifyEmail(pinCode);
-            navigate("/");
+            navigate("/dashboard");
             toast.success("Verification successful");
         } catch (error) {
             console.log(error);
