@@ -20,7 +20,7 @@ export default function RegistrationPage() {
 	const onSubmit = async (data) => {
 		try {
 			await signUp(data.email, data.password, data.username);
-			console.log("Sign up successfull!");
+			console.log("Sign up successful!");
 			navigate("/verify-email");
 		} catch (error) {
 			console.log(error);
