@@ -20,12 +20,12 @@ export default function RegistrationPage() {
 	const onSubmit = async (data) => {
 		try {
 			await signUp(data.email, data.password, data.username);
+			console.log("Sign up successfull!");
 			navigate("/pricing");
 		} catch (error) {
 			console.log(error);
 		}
 	};
-
 
 	return <MainLayout>
 		<div className="flex flex-col lg:flex-row h-screen p-12 bg-[#f2f4f6]">
@@ -67,7 +67,7 @@ export default function RegistrationPage() {
 						SIGN UP
 					</button>
 					<p className='text-center mt-6 text-sm'>
-						By continuing, you agree to the mycomp <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
+						By continuing, you agree to the myxoma <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
 					</p>
 				</form>
 				<button className="w-[400px] mt-4 text-black font-normal border rounded flex items-center justify-center hover:bg-gray-100 py-2">
