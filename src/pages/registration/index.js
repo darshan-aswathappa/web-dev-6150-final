@@ -70,7 +70,7 @@ export default function RegistrationPage() {
 						By continuing, you agree to the myxoma <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
 					</p>
 				</form>
-				<button className="w-[400px] mt-4 text-black font-normal border rounded flex items-center justify-center hover:bg-gray-100 py-2">
+				<button onClick={() => navigate("/login")} className="w-[400px] mt-4 text-black font-normal border rounded flex items-center justify-center hover:bg-gray-100 py-2">
 					Already a member? <span className="font-bold ml-1">Sign in now</span>
 				</button>
 			</div>
