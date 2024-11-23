@@ -12,6 +12,7 @@ import {
 import useRecommendationStore from '../../store/resume-recomendation';
 import { Link } from 'react-router-dom';
 import SpinnerComponent from "../../components/dashboard/loader";
+import ProgressRing from '../../components/dashboard/meter';
 
 export default function Dashboard() {	
 	const { fetchRecommendations, isFetching, error, recommendations } =
@@ -102,8 +103,8 @@ export default function Dashboard() {
 									</TooltipProvider>
 								</div>
 							</div>
-							<div className="hidden bg-red-600 w-48 xl:flex items-center justify-center text-white rounded-r-md">
-								<p>Rank: {item.rank}</p>
+							<div className="hidden bg-gradient-to-b from-[#020806] to-[#014b3a] w-48 xl:flex items-center justify-center text-white rounded-md">
+								<ProgressRing progress={item.rank} label={getLabel(item.rank)}/>
 							</div>
 						</div>
 					</Link>
@@ -111,4 +112,16 @@ export default function Dashboard() {
 			</div>
 		</Layout>
 	);
+}
+
+function getLabel(progress) {
+	if (progress < 50) {
+		return 'BAD MATCH';
+	} else if (progress >= 50 && progress < 75) {
+		return 'FAIR MATCH';
+	} else if (progress >= 75 && progress < 85) {
+		return 'GOOD MATCH';
+	} else {
+		return 'STRONG MATCH';
+	}
 }
