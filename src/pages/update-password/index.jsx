@@ -8,7 +8,7 @@ export default function UpdatePassword() {
 
 	return (
 		<MainLayout>
-			<div></div>
+			<div>test</div>
 		</MainLayout>
 	);
 }
