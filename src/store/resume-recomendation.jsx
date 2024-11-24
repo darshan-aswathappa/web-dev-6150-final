@@ -9,19 +9,22 @@ const useRecommendationStore = create(set => ({
 	recommendations: null,
 	error: null,
 	isFetching: false,
+	hasFetched: false,
 
-	fetchRecommendations: async subjects => {
-		set({ isFetching: true, error: null});
+	fetchRecommendations: async (subjects, userId) => {
+		set({ isFetching: true, error: null });
 		try {
 			const response = await axios.post(
 				`${API_URL}/fetch-courses-recommendation`,
 				{
-					subjects,
+					message: subjects,
+					userId,
 				}
 			);			
 			set({
 				recommendations: response.data,
 				isFetching: false,
+				hasFetched: true,
 			});
 		} catch (error) {
 			set({

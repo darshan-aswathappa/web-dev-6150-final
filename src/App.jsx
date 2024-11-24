@@ -106,7 +106,7 @@ function App() {
 						}
 					/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
-					<Route path="*" element={<Navigate to="/" replace />} />
+					<Route path="*" element={<Navigate to="/dashboard" replace />} />
 				</Routes>
 				<Toaster />
 			</div>

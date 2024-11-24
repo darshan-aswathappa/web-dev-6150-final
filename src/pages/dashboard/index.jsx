@@ -2,7 +2,7 @@ import React from 'react';
 import Layout from '../../layout/main';
 import clipText from '../../lib/textClipper';
 import { Badge } from '@/components/ui/badge';
-import { BadgeCheck, BadgeX } from 'lucide-react';
+import { BadgeCheck, BadgeX, Book, TimerIcon } from 'lucide-react';
 import {
 	Tooltip,
 	TooltipContent,
@@ -13,16 +13,18 @@ import useRecommendationStore from '../../store/resume-recomendation';
 import { Link } from 'react-router-dom';
 import SpinnerComponent from "../../components/dashboard/loader";
 import ProgressRing from '../../components/dashboard/meter';
+import UseAuthStore from "../../store/authStore";
 
 export default function Dashboard() {	
-	const { fetchRecommendations, isFetching, error, recommendations } =
+	const { fetchRecommendations, isFetching, error, recommendations, hasFetched } =
 		useRecommendationStore();
+	const { user } = UseAuthStore();
 
 	React.useEffect(() => {
-		if (recommendations === null) {
-			fetchRecommendations("DAMG");
+		if (!hasFetched) {
+			fetchRecommendations('CSYE', user._id);
 		}
-	}, [recommendations, isFetching]);
+	}, [hasFetched, fetchRecommendations]);
 	
 	if(isFetching || recommendations === null) {
 		return (
@@ -45,12 +47,21 @@ export default function Dashboard() {
 							<div className="p-4 flex-1">
 								<div className="flex space-x-3">
 									<Badge variant="secondary">
+										<Book className="w-3 mr-1" />
 										{item.name} - {item.number}
 									</Badge>
-									<Badge variant="outline">{item.credits} Hours</Badge>
+									<Badge variant="outline">
+										<TimerIcon className="w-3 mr-1" />
+										{item.credits} Hours
+									</Badge>
 								</div>
 								<div>
-									<h1 className="font-bold text-xl pt-2">{item.subjectName}</h1>
+									<h1 className="font-bold text-xl pt-2 hidden md:block">
+										{item.subjectName}
+									</h1>
+									<h1 className="font-bold text-xl pt-2 md:hidden">
+										{clipText(item.subjectName, 5)}
+									</h1>
 									<p className="text-sm text-justify md:hidden">
 										{clipText(item.description, 20)}
 									</p>
@@ -69,7 +80,10 @@ export default function Dashboard() {
 													</Badge>
 												) : (
 													<Badge variant="outline">
-														<BadgeX className="w-3 mr-1" /> No Prerequisite
+														<BadgeX className="w-3 mr-1" />{' '}
+														<span className="text-gray-600">
+															No Prerequisite
+														</span>
 													</Badge>
 												)}
 											</TooltipTrigger>
@@ -90,7 +104,10 @@ export default function Dashboard() {
 													</Badge>
 												) : (
 													<Badge variant="outline">
-														<BadgeX className="w-3 mr-1" /> No core requisites
+														<BadgeX className="w-3 mr-1" />{' '}
+														<span className="text-gray-600">
+															No core requisites
+														</span>
 													</Badge>
 												)}
 											</TooltipTrigger>
@@ -104,7 +121,10 @@ export default function Dashboard() {
 								</div>
 							</div>
 							<div className="hidden bg-gradient-to-b from-[#020806] to-[#014b3a] w-48 xl:flex items-center justify-center text-white rounded-md">
-								<ProgressRing progress={item.rank} label={getLabel(item.rank)}/>
+								<ProgressRing
+									progress={item.rank}
+									label={getLabel(item.rank)}
+								/>
 							</div>
 						</div>
 					</Link>

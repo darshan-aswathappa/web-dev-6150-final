@@ -28,7 +28,7 @@ export default function RegistrationPage() {
         }
 	};
 
-	return <MainLayout>
+	return(
 		<div className="flex flex-col lg:flex-row h-screen p-12 bg-[#f2f4f6]">
 			<div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-teal-100 to-teal-400 flex-col justify-between items-start p-8 text-center text-white rounded-l-lg">
 				<h1 className="text-3xl font-bold mb-4 text-left text-black">
@@ -74,5 +74,5 @@ export default function RegistrationPage() {
 				</button>
 			</div>
 		</div>
-	</MainLayout>
+	);
 }
