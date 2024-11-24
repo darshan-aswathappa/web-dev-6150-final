@@ -1,10 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 export default function ProgressRing({
-	progress = 98,
+	progress,
 	label = 'STRONG MATCH',
 	size = 120,
 	strokeWidth = 4,
+	textFont = 'text-3xl',
+	progressTextColor = 'text-white',
+	labelTextFont = 'text-sm',
+	labelTextColor = 'text-white',
 }) {
 	const [currentProgress, setCurrentProgress] = useState(0);
 
@@ -25,7 +29,6 @@ export default function ProgressRing({
 		<div className="flex flex-col items-center justify-center">
 			<div className="relative" style={{ width: size, height: size }}>
 				<svg className="-rotate-90" width={size} height={size}>
-					{/* Background circle */}
 					<circle
 						cx={center}
 						cy={center}
@@ -35,7 +38,6 @@ export default function ProgressRing({
 						strokeWidth={strokeWidth}
 						className="text-gray-800"
 					/>
-					{/* Progress circle */}
 					<circle
 						cx={center}
 						cy={center}
@@ -48,7 +50,6 @@ export default function ProgressRing({
 						className="transition-[stroke-dashoffset] duration-1000 ease-out"
 						strokeLinecap="round"
 					/>
-					{/* Gradient Definition */}
 					<defs>
 						<linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
 							<stop offset="0%" stopColor="#3B82F6" />
@@ -56,15 +57,13 @@ export default function ProgressRing({
 						</linearGradient>
 					</defs>
 				</svg>
-				{/* Centered Text */}
 				<div className="absolute inset-0 flex items-center justify-center">
-					<span className="text-3xl font-bold text-white">
+					<span className={`${textFont} font-bold ${progressTextColor}`}>
 						{currentProgress}%
 					</span>
 				</div>
 			</div>
-			{/* Label */}
-			<span className="mt-2 text-sm font-semibold tracking-wider text-white">
+			<span className={`mt-2 ${labelTextFont} font-semibold tracking-wider ${labelTextColor}`}>
 				{label}
 			</span>
 		</div>
