@@ -1,10 +1,22 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
+    darkMode: ["class"],
     content: [
-        "./src/**/*.{js,jsx,ts,tsx}",
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx}",
     ],
     theme: {
-        extend: {},
+    	extend: {
+    		borderRadius: {
+    			lg: 'var(--radius)',
+    			md: 'calc(var(--radius) - 2px)',
+    			sm: 'calc(var(--radius) - 4px)'
+    		},
+    		colors: {},
+            fontFamily: {
+                ibm: ["IBM Plex Sans", "sans-serif"]
+            }
+    	}
     },
-    plugins: [],
+    plugins: [require("tailwindcss-animate"), require("@tailwindcss/typography")],
 }

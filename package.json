@@ -4,32 +4,42 @@
 	"private": true,
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.1",
+		"@radix-ui/react-dialog": "^1.1.2",
+		"@radix-ui/react-progress": "^1.1.0",
+		"@radix-ui/react-scroll-area": "^1.2.1",
+		"@radix-ui/react-slot": "^1.1.0",
+		"@radix-ui/react-toggle": "^1.1.0",
+		"@radix-ui/react-tooltip": "^1.1.4",
+		"@tailwindcss/typography": "^0.5.15",
 		"@testing-library/jest-dom": "^5.17.0",
 		"@testing-library/react": "^13.4.0",
 		"@testing-library/user-event": "^13.5.0",
+		"axios": "^1.7.7",
 		"bootstrap": "^5.3.3",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.1.1",
+		"lucide-react": "^0.460.0",
 		"react": "^18.3.1",
 		"react-bootstrap": "^2.10.5",
 		"react-bootstrap-icons": "^1.11.4",
+		"react-code-input": "^3.10.1",
 		"react-dom": "^18.3.1",
 		"react-hook-form": "^7.53.2",
+		"react-hot-toast": "^2.4.1",
 		"react-router-dom": "^6.26.2",
-		"react-scripts": "5.0.1",
 		"react-toastify": "^10.0.5",
+		"tailwind-merge": "^2.5.4",
+		"tailwindcss-animate": "^1.0.7",
 		"three": "^0.169.0",
 		"vanta": "^0.5.24",
 		"web-vitals": "^2.1.4",
 		"zod": "^3.23.8",
 		"zustand": "^5.0.1"
-		"web-vitals": "^2.1.4",
-		"three": "^0.169.0",
-		"vanta": "^0.5.24"
 	},
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
+		"start": "vite",
+		"build": "vite build",
+		"serve": "vite preview"
 	},
 	"eslintConfig": {
 		"extends": [
@@ -51,12 +61,17 @@
 	},
 	"devDependencies": {
 		"@eslint/js": "^9.12.0",
+		"@vitejs/plugin-react": "^4.3.3",
+		"autoprefixer": "^10.4.20",
 		"eslint": "^8.57.1",
 		"eslint-plugin-import": "^2.31.0",
 		"eslint-plugin-jsx-a11y": "^6.10.0",
 		"eslint-plugin-react": "^7.37.1",
 		"eslint-plugin-react-hooks": "^4.6.2",
 		"globals": "^15.10.0",
-		"tailwindcss": "^3.4.15"
+		"postcss": "^8.4.49",
+		"tailwindcss": "^3.4.15",
+		"vite": "^5.4.11",
+		"vite-plugin-svgr": "^4.3.0"
 	}
 }
