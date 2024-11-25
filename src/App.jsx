@@ -10,6 +10,7 @@ import Settings from "./pages/settings";
 import ResumeOptions from "./pages/resume";
 import ChatbotPage from "./pages/chatbot";
 import IndividualPaths from "./pages/dashboard/individual";
+import SpinnerComponent from "./components/dashboard/loader";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
@@ -44,7 +45,7 @@ function App() {
         checkAuth();
     }, [checkAuth]);
 
-    if (isCheckingAuth) return <h1>Loading....</h1>;
+    if (isCheckingAuth) return <SpinnerComponent spinnerLabel="Setting up things..."/>;
 
     return (
 			<div className="font-ibm">

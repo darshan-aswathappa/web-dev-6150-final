@@ -11,8 +11,7 @@ import { ArrowUpNarrowWide, ArrowDownNarrowWide } from 'lucide-react';
 export default function Dashboard() {	
 	const { fetchRecommendations, isFetching, error, recommendations, hasFetched } =
 		useRecommendationStore();
-	const { user } = UseAuthStore();
-
+	const { user } = UseAuthStore();	
 	const { sortOrder, toggleSortOrder } = useSortStore();
 
 	React.useEffect(() => {

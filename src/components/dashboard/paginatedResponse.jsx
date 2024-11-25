@@ -83,23 +83,19 @@ const PaginatedRecommendations = ({
 												</h1>
 											</div>
 										</div>
-										{/* <div className='xl:hidden'>
-											<ProgressRing
-												size={50}
-												progress={item.rank}
-												strokeWidth={3}
-												label={getLabel(item.rank)}
-												textFont='text-sm'
-												progressTextColor='text-black'
-												labelTextColor='text-black'
-												labelTextFont='text-xs'
-											/>
-										</div> */}
+										<div className="xl:hidden flex flex-col items-center justify-center">
+											<Badge
+												variant={getButtonVariant(item.rank)}
+												className="shadow-none mb-2"
+											>
+												{item.rank}% - {getLabel(item.rank)}
+											</Badge>
+										</div>
 									</div>
 								</div>
 								<div>
 									<h1 className="font-bold text-xl pt-2 md:hidden">
-										{clipText(item.subjectName, 5)}
+										{clipText(item.subjectName, 4)}
 									</h1>
 									<p className="text-sm text-justify md:hidden">
 										{clipText(item.description, 20)}
@@ -186,6 +182,18 @@ function getLabel(progress) {
 		return 'GOOD MATCH';
 	} else {
 		return 'STRONG MATCH';
+	}
+}
+
+function getButtonVariant(progress) {
+	if (progress < 50) {
+		return 'destructive';
+	} else if (progress >= 50 && progress < 75) {
+		return 'secondary';
+	} else if (progress >= 75 && progress < 85) {
+		return 'outline';
+	} else {
+		return 'primary';
 	}
 }
 

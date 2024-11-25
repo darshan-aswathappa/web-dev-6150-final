@@ -1,6 +1,6 @@
 import React from 'react'
 
-function SpinnerComponent() {
+function SpinnerComponent({spinnerLabel = "Fetching recommendation details..."}){
   return (
 		<div className="flex items-center justify-center min-h-screen">
 			<div className="flex justify-center items-center flex-col space-y-1">
@@ -21,7 +21,7 @@ function SpinnerComponent() {
 					/>
 				</svg>
 				<span className="text-black text-sm font-medium">
-					Fetching recommendation details...
+					{spinnerLabel}
 				</span>
 			</div>
 		</div>
