@@ -1,6 +1,7 @@
 import React from 'react';
 import { z } from 'zod';
 import useMultiSelectStore from '../../store/useMultiSelectStore';
+import { Badge } from '@/components/ui/badge';
 
 const options = [
 	{ id: 1, label: 'AACE' },
@@ -125,20 +126,20 @@ const MultiSelect = () => {
 
 	return (
 		<div className="bg-white rounded-lg">
-			<h2 className="text-xl font-semibold">Select courses for recommendation: (Max 3)</h2>
-			<div className="space-y-2 grid grid-cols-12 gap-4">
+			<h2 className="text-xl font-semibold">
+				Select courses for recommendation: (Max 3)
+			</h2>
+			<div className="grid grid-cols-10 gap-4">
 				{options.map(option => (
-					<div
+					<Badge
+						className={`cursor-pointer px-4 py-2 rounded-lg border text-center items-center justify-center ${ selectedOptions.includes(option.label) ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
 						key={option.id}
-						className={`cursor-pointer px-4 py-2 rounded-lg border ${
-							selectedOptions.includes(option.label)
-								? 'bg-blue-500 text-white'
-								: 'bg-gray-100'
-						}`}
 						onClick={() => handleSelect(option)}
+						selected={selectedOptions.includes(option.label)}
+						variant="outline"
 					>
 						{option.label}
-					</div>
+					</Badge>
 				))}
 			</div>
 			{!validationResult.success && (

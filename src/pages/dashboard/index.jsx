@@ -15,12 +15,12 @@ export default function Dashboard() {
 	const { user } = UseAuthStore();	
 	const { sortOrder, toggleSortOrder } = useSortStore();
 
-	// if (user.userResumeParsedDetails === null 
-	// 	|| user.resumeData === null 
-	// 	|| user.resumeData === undefined 
-	// 	|| user.resumeData.length === 0) {
-	// 	return <Navigate to="/upload-resume" replace />;
-	// }
+	if (user.userResumeParsedDetails === null 
+		|| user.resumeData === null 
+		|| user.resumeData === undefined 
+		|| user.resumeData.length === 0) {
+		return <Navigate to="/upload-resume" replace />;
+	}
 
 	React.useEffect(() => {
 		if (!hasFetched) {

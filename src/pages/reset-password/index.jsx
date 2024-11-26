@@ -44,7 +44,7 @@ export default function ResetPasswordPage() {
       </div>
     
       <div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
-        <h2 className="text-2xl font-bold text-center mb-4">
+        <h2 className="text-2xl font-bold text-center mb-1">
           Reset Your Password
         </h2>
         <p className="text-gray-600 text-sm text-center mb-6">
@@ -62,7 +62,7 @@ export default function ResetPasswordPage() {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your new password"
-              className="w-full p-3 border rounded-md focus:ring focus:ring-teal-300 border-gray-300"
+              className="w-full p-2 mt-2 border rounded-md focus:ring focus:ring-teal-300 border-gray-300"
             />
           </div>
     
@@ -76,7 +76,7 @@ export default function ResetPasswordPage() {
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               placeholder="Confirm your new password"
-              className="w-full p-3 border rounded-md focus:ring focus:ring-teal-300 border-gray-300"
+              className="w-full p-2 mt-2 border rounded-md focus:ring focus:ring-teal-300 border-gray-300"
             />
           </div>
     

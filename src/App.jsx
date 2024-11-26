@@ -117,7 +117,6 @@ function App() {
 							</RedirectAuthenticatedUser>
 						}
 					/>
-
                     <Route
 						path='/forgot-password'
 						element={
@@ -126,13 +125,12 @@ function App() {
                     		</RedirectAuthenticatedUser>
 						}
             		/>
-
                     <Route
 						path='/reset-password/:token'
 						element={
-							<RedirectAuthenticatedUser>
+							// <RedirectAuthenticatedUser>
 								<ResetPasswordPage/>
-                    		</RedirectAuthenticatedUser>
+                    		// </RedirectAuthenticatedUser>
 						}
             		/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
