@@ -4,6 +4,7 @@ import useFetchUserResumeStore from "../../store/getUserResumeStore";
 import useAuthStore from '../../store/authStore';
 import SpinnerComponent from '../../components/dashboard/loader';
 import { Book, FileSpreadsheetIcon, MapPin, Mail, Award, Briefcase, MedalIcon } from 'lucide-react';
+import { Separator } from "@/components/ui/separator"
 
 export default function ResumeOptions() {
 	const {user} = useAuthStore();
@@ -32,8 +33,9 @@ export default function ResumeOptions() {
 				<FileSpreadsheetIcon className="w-10 h-10" />
 				<h1 className="text-4xl font-semibold mb-6 pl-2">Resume</h1>
 			</div>
+			<Separator />
 			{userResume && userResume.resume ? (
-				<div className="space-y-2">
+				<div className="space-y-2 mt-3">
 					<div className="p-2">
 						<label className="font-semibold mb-2 text-2xl flex items-center">
 							<MapPin className="mr-2" /> Location:
@@ -62,6 +64,7 @@ export default function ResumeOptions() {
 						<label className="font-semibold p-2 text-2xl flex items-center">
 							<Book className="mr-2" /> Skills:
 						</label>
+						<Separator />
 						<div className="flex flex-wrap">
 							<div className="rounded-lg m-2 text-justify text-md">
 								{userResume.resume.skills}
@@ -72,6 +75,7 @@ export default function ResumeOptions() {
 						<label className="font-semibold p-2 text-2xl flex items-center">
 							<Award className="mr-2" /> Education:
 						</label>
+						<Separator />
 						<div className="flex flex-wrap">
 							<div className="rounded-lg m-2">
 								{userResume.resume.education.map((edu, index) => (
@@ -88,6 +92,7 @@ export default function ResumeOptions() {
 						<label className="font-semibold p-2 text-2xl flex items-center">
 							<Briefcase className="mr-2" /> Experience:
 						</label>
+						<Separator />
 						<div className="flex flex-wrap">
 							<div className="rounded-lg m-2">
 								{userResume.resume.experience.map((exp, index) => (
@@ -95,7 +100,9 @@ export default function ResumeOptions() {
 										<p className="font-semibold italic">{exp.company}</p>
 										<p>{exp.position}</p>
 										<p>{exp.location}</p>
-										<p className='text-justify text-md'>{exp.workDescription}</p>
+										<p className="text-justify text-md">
+											{exp.workDescription}
+										</p>
 										<p>{exp.duration}</p>
 										<p>
 											<span className="font-medium">Start Date: </span>
@@ -114,6 +121,7 @@ export default function ResumeOptions() {
 						<label className="font-semibold p-2 text-2xl flex items-center">
 							<MedalIcon className="mr-2" /> Projects:
 						</label>
+						<Separator />
 						<div className="flex flex-wrap">
 							<div className="rounded-lg m-2">
 								{userResume.resume.projects.map((project, index) => (
@@ -121,7 +129,9 @@ export default function ResumeOptions() {
 										<p className="font-semibold italic">
 											{project.projectName}
 										</p>
-										<p className="text-justify text-md">{project.projectDescription}</p>
+										<p className="text-justify text-md">
+											{project.projectDescription}
+										</p>
 									</div>
 								))}
 							</div>
