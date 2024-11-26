@@ -65,6 +65,9 @@ export default function RegistrationPage() {
 					<button className="w-full py-2 px-4 mt-4 bg-black text-white rounded font-bold">
 						SIGN IN
 					</button>
+                    <button type="button" onClick={() => navigate("/forgot-password")} className="text-sm text-black-500 hover:underline">
+                            Forgot Password?
+                    </button>
 					<p className='text-center mt-6 text-sm'>
 						By continuing, you agree to the myxoma <span className='font-bold'>Terms of Service</span> and the <span className='font-bold'>Privacy Policy</span>
 					</p>
