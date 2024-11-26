@@ -98,7 +98,7 @@ export default function ForgotPasswordPage() {
                 type="email"
                 ref={emailRef}
                 placeholder="Enter your email"
-                className={`w-full p-3 border rounded-md focus:ring focus:ring-teal-300 ${
+                className={`w-full p-2 mt-2 border rounded-md focus:ring focus:ring-teal-300 ${
                   errors.email ? "border-red-500" : "border-gray-300"
                 }`}
                 onChange={validateForm}
