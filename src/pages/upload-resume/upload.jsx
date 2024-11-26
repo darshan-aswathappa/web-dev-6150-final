@@ -20,7 +20,7 @@ import MultiSelect from '../../components/upload-resume/multiSelect';
 import useRecommendationStore from '../../store/resume-recomendation';
 import useMultiSelectStore from '../../store/useMultiSelectStore';
 import SpinnerComponent from '../../components/dashboard/loader';
-import { useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function UploadResume() {
 	const { user } = useAuthStore();
@@ -28,7 +28,10 @@ function UploadResume() {
     const { fetchRecommendations, hasFetched } = useRecommendationStore();
     const { selectedOptions } = useMultiSelectStore();
 	const [fetchResumeRecommendations, setFetchResumeRecommendations] = React.useState(false);
-	const navigate = useNavigate();
+
+	if(user.resumeData && user.resumeData.length > 0) {
+		return <Navigate to="/dashboard"  replace/>
+	}
 
 	const formSchema = z.object({
 		resume: z.any().refine(file => file && file.length > 0, {
@@ -48,15 +51,11 @@ function UploadResume() {
 		setFetchResumeRecommendations(true);
 	    try {
 	    	await postResumeDetails(user._id, values.resume[0]);
-	    	toast.success('Resume uploaded!', {
-				position: 'bottom-right',
-			});
 	    	await fetchRecommendations(selectedOptions.join(','), user._id);
 			setFetchResumeRecommendations(false);
 			toast.success('Recommendations generated!', {
 				position: 'bottom-right',
 			});
-			navigate('/dashboard');
 	    } catch (error) {
 	    	toast.error('Failed to upload resume');
 	    }
@@ -64,7 +63,7 @@ function UploadResume() {
 
 	return (
 		<div className="mx-auto p-10 bg-white rounded-lg">
-			{fetchResumeRecommendations && <div><SpinnerComponent spinnerLabel='Fetching custom recommendation, this might take a upto 7 minutes...'/></div>}
+			{fetchResumeRecommendations && <div><SpinnerComponent spinnerLabel='Fetching custom recommendation, this might take a upto 10 minutes...'/></div>}
 			<Form {...form}>
 				<form onSubmit={form.handleSubmit(onSubmit)}>
 					<FormField
