@@ -7,6 +7,7 @@ import PaginatedRecommendations from '../../components/dashboard/paginatedRespon
 import useSortStore from '../../store/sortStore';
 import { Toggle } from '@/components/ui/toggle';
 import { ArrowUpNarrowWide, ArrowDownNarrowWide } from 'lucide-react';
+import { Navigate } from 'react-router-dom';
 
 export default function Dashboard() {	
 	const { fetchRecommendations, isFetching, error, recommendations, hasFetched } =
@@ -14,9 +15,16 @@ export default function Dashboard() {
 	const { user } = UseAuthStore();	
 	const { sortOrder, toggleSortOrder } = useSortStore();
 
+	// if (user.userResumeParsedDetails === null 
+	// 	|| user.resumeData === null 
+	// 	|| user.resumeData === undefined 
+	// 	|| user.resumeData.length === 0) {
+	// 	return <Navigate to="/upload-resume" replace />;
+	// }
+
 	React.useEffect(() => {
 		if (!hasFetched) {
-			fetchRecommendations('CSYE', user._id);
+			fetchRecommendations("", user._id);
 		}
 	}, [hasFetched, fetchRecommendations]);
 	

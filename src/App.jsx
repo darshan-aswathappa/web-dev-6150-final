@@ -11,6 +11,7 @@ import ResumeOptions from "./pages/resume";
 import ChatbotPage from "./pages/chatbot";
 import IndividualPaths from "./pages/dashboard/individual";
 import SpinnerComponent from "./components/dashboard/loader";
+import UploadResume from "./pages/upload-resume/upload";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
@@ -63,6 +64,14 @@ function App() {
 						element={
 							<ProtectedRoute>
 								<IndividualPaths />
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="upload-resume"
+						element={
+							<ProtectedRoute>
+								<UploadResume />
 							</ProtectedRoute>
 						}
 					/>
