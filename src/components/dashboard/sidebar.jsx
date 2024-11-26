@@ -9,7 +9,7 @@ export default function Sidebar() {
 	const menuItems = [
 		{ name: 'Home', icon: Home, path: '/dashboard' },
 		{ name: 'Settings', icon: Settings, path: '/settings' },
-		{ name: 'Resume Options', icon: FileText, path: '/resume' },
+		{ name: 'Resume', icon: FileText, path: '/resume' },
 	];
 
 	return (

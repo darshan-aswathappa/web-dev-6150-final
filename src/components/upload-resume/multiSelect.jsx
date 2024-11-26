@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { z } from 'zod';
 import useMultiSelectStore from '../../store/useMultiSelectStore';
 import { Badge } from '@/components/ui/badge';
@@ -113,34 +113,60 @@ const selectedOptionsSchema = z
 
 const MultiSelect = () => {
 	const { selectedOptions, addOption, removeOption } = useMultiSelectStore();
+	const [isOpen, setIsOpen] = useState(false);
+	const dropdownRef = useRef(null);
 
 	const handleSelect = option => {
 		if (selectedOptions.includes(option.label)) {
 			removeOption(option.label);
 		} else if (selectedOptions.length < 3) {
 			addOption(option.label);
+			if (selectedOptions.length + 1 === 3) {
+				setIsOpen(false);
+			}
 		}
 	};
+
+	const handleClickOutside = event => {
+		if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+			setIsOpen(false);
+		}
+	};
+
+	useEffect(() => {
+		document.addEventListener('mousedown', handleClickOutside);
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside);
+		};
+	}, []);
 
 	const validationResult = selectedOptionsSchema.safeParse(selectedOptions);
 
 	return (
-		<div className="bg-white rounded-lg">
+		<div className="bg-white rounded-lg" ref={dropdownRef}>
 			<h2 className="text-xl font-semibold">
 				Select courses for recommendation: (Max 3)
 			</h2>
-			<div className="grid grid-cols-10 gap-4">
-				{options.map(option => (
-					<Badge
-						className={`cursor-pointer px-4 py-2 rounded-lg border text-center items-center justify-center ${ selectedOptions.includes(option.label) ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
-						key={option.id}
-						onClick={() => handleSelect(option)}
-						selected={selectedOptions.includes(option.label)}
-						variant="outline"
-					>
-						{option.label}
-					</Badge>
-				))}
+			<div className="relative">
+				<div
+					className="cursor-pointer px-4 py-2 rounded-lg border bg-gray-100"
+					onClick={() => setIsOpen(!isOpen)}
+				>
+					{selectedOptions.length > 0 ? selectedOptions.join(', ') : 'Select options'}
+				</div>
+				{isOpen && (
+					<div className="absolute z-10 bg-white border rounded-lg mt-2 w-full max-h-60 overflow-y-auto">
+						{options.map(option => (
+							<div
+								className={`cursor-pointer px-4 py-2 ${selectedOptions.includes(option.label) ? 'bg-blue-500 text-white' : 'bg-gray-100'}`}
+								key={option.id}
+								onClick={() => handleSelect(option)}
+							>
+								{option.label}
+							</div>
+						))}
+					</div>
+				)}
 			</div>
 			{!validationResult.success && (
 				<p className="text-red-500 mt-2 text-sm">
