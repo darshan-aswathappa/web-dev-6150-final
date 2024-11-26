@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { set } from "react-hook-form";
 
 const API_URL = "http://localhost:5000/api/auth";
 
@@ -64,6 +65,31 @@ const useAuthStore = create((set) => ({
             set({ user: null, isAuthenticated: false, error: null, isLoading: false });
         } catch (error) {
             set({ error: "Error logging out", isLoading: false });
+            throw error;
+        }
+    },
+
+    forgotPassword: async (email) => {
+        set({ isLoading: true, error: null, message:null});
+        try {
+            const response = await axios.post(`${API_URL}/forgot-password`, {email});
+            set({ message: response.data.message, isLoading: false });
+        } catch (error) {
+            set({error: error.response.data.message || "Error verifying email", isLoading: false });
+            throw error;
+        }
+    },
+
+    resetPassword: async (token, password) => { 
+        set({isLoading: true, error:null});
+        try {
+            const response = await axios.post(`${API_URL}/reset-password/${token}`, {password})
+            set({message:response.data.message, isLoading:false})            
+        } catch (error) {
+            set({
+                isLoading:false,
+                error: error.response.data.message || "Error resetting password",
+            });
             throw error;
         }
     },

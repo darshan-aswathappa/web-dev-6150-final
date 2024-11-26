@@ -11,6 +11,8 @@ import ResumeOptions from "./pages/resume";
 import ChatbotPage from "./pages/chatbot";
 import IndividualPaths from "./pages/dashboard/individual";
 import SpinnerComponent from "./components/dashboard/loader";
+import ForgotPasswordPage from "./pages/forgot-password";
+import ResetPasswordPage from "./pages/reset-password";
 import UploadResume from "./pages/upload-resume/upload";
 
 // eslint-disable-next-line react/prop-types
@@ -115,6 +117,24 @@ function App() {
 							</RedirectAuthenticatedUser>
 						}
 					/>
+
+                    <Route
+						path='/forgot-password'
+						element={
+							<RedirectAuthenticatedUser>
+								<ForgotPasswordPage/>
+                    		</RedirectAuthenticatedUser>
+						}
+            		/>
+
+                    <Route
+						path='/reset-password/:token'
+						element={
+							<RedirectAuthenticatedUser>
+								<ResetPasswordPage/>
+                    		</RedirectAuthenticatedUser>
+						}
+            		/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
 					<Route path="*" element={<Navigate to="/dashboard" replace />} />
 				</Routes>
