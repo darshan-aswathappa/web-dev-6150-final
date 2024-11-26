@@ -38,6 +38,40 @@ export default function ForgotPasswordPage() {
       toast.error(error || "Error sending password reset link");
     }
   };
+  const emailRef = useRef();
+  const navigate = useNavigate();
+  const { forgotPassword, error, message, isLoading } = useAuthStore();
+  const [errors, setErrors] = useState({});
+  const [isFormValid, setIsFormValid] = useState(false);
+  const [isEmailSent, setIsEmailSent] = useState(false);
+
+  const validateForm = () => {
+    const email = emailRef.current.value;
+    let newErrors = {};
+
+    if (!email) {
+      newErrors.email = "Email is required.";
+    } else if (!/^\S+@\S+\.\S+$/.test(email)) {
+      newErrors.email = "Invalid email format.";
+    }
+
+    setErrors(newErrors);
+    setIsFormValid(Object.keys(newErrors).length === 0);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!validateForm()) return;
+
+    try {
+      await forgotPassword(emailRef.current.value);
+      toast.success(message || "Password reset link sent to your email!");
+      setIsEmailSent(true); 
+    } catch (err) {
+      toast.error(error || "Error sending password reset link");
+    }
+  };
 
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-teal-100 to-teal-400 p-6">

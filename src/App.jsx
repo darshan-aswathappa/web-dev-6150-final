@@ -14,6 +14,8 @@ import SpinnerComponent from "./components/dashboard/loader";
 import ForgotPasswordPage from "./pages/forgot-password";
 import ResetPasswordPage from "./pages/reset-password";
 import UploadResume from "./pages/upload-resume/upload";
+import ForgotPasswordPage from "./pages/forgot-password";
+import ResetPasswordPage from "./pages/reset-password";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
@@ -117,6 +119,7 @@ function App() {
 							</RedirectAuthenticatedUser>
 						}
 					/>
+
                     <Route
 						path='/forgot-password'
 						element={
@@ -125,12 +128,13 @@ function App() {
                     		</RedirectAuthenticatedUser>
 						}
             		/>
+
                     <Route
 						path='/reset-password/:token'
 						element={
-							// <RedirectAuthenticatedUser>
+							<RedirectAuthenticatedUser>
 								<ResetPasswordPage/>
-                    		// </RedirectAuthenticatedUser>
+                    		</RedirectAuthenticatedUser>
 						}
             		/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
