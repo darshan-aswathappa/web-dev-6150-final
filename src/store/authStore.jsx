@@ -1,6 +1,5 @@
 import { create } from "zustand";
 import axios from "axios";
-import { set } from "react-hook-form";
 
 const API_URL = "http://localhost:5000/api/auth";
 

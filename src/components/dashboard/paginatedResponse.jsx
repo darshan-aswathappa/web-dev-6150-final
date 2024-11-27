@@ -101,7 +101,7 @@ const PaginatedRecommendations = ({
 										{clipText(item.description, 20)}
 									</p>
 									<p className="hidden md:block text-sm text-justify">
-										{clipText(item.description, 50)}
+										{clipText(item.description, 40)}
 									</p>
 								</div>
 								<div className="flex space-x-2">
