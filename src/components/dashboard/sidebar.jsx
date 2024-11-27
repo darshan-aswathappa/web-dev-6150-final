@@ -33,7 +33,7 @@ export default function Sidebar() {
     const settingsItem = { name: 'Settings', icon: Settings, path: null, onClick: () => setSettingsDialogOpen(true) };
 
     return (
-			<div className="flex flex-col h-screen w-72 bg-white">
+			<div className="flex flex-col h-screen w-62 bg-white">
 				<div className="flex items-center justify-center h-20">
 					<h1 className="text-3xl font-bold text-gray-800">Logo</h1>
 				</div>

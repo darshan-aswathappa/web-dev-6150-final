@@ -24,7 +24,9 @@ export default function Dashboard() {
 
 	React.useEffect(() => {
 		if (!hasFetched) {
-			fetchRecommendations("", user._id);
+			fetchRecommendations("", user._id).then(() => {
+				useRecommendationStore.setState({ hasFetched: true });
+			});
 		}
 	}, [hasFetched, fetchRecommendations]);
 	

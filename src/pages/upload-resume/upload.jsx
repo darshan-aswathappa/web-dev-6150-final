@@ -29,7 +29,6 @@ function UploadResume() {
     const { selectedOptions } = useMultiSelectStore();
 	const [fetchResumeRecommendations, setFetchResumeRecommendations] = React.useState(false);
 	const [pdfPreview, setPdfPreview] = useState(null);
-	const navigate = useNavigate();
 	
 	if(user.resumeData && user.resumeData.length > 0) {
 		return <Navigate to="/dashboard"  replace/>
@@ -54,12 +53,10 @@ function UploadResume() {
 	    try {
 	    	await postResumeDetails(user._id, values.resume[0]);
 	    	await fetchRecommendations(selectedOptions.join(','), user._id);
-			
 	    } catch (error) {
 	    	toast.error('Failed to upload resume');
 	    } finally {
 			setFetchResumeRecommendations(false);
-			navigate('/dashboard');
 		}
 	}
 

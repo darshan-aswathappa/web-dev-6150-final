@@ -107,9 +107,6 @@ export default function ResumeOptions() {
 										<p className="text-justify text-md">
 											{exp.workDescription}
 										</p>
-										<p className="text-justify text-md">
-											{exp.workDescription}
-										</p>
 										<p>{exp.duration}</p>
 										<p>
 											<span className="font-medium">Start Date: </span>
@@ -135,9 +132,6 @@ export default function ResumeOptions() {
 									<div key={index} className="mb-4">
 										<p className="font-semibold italic">
 											{project.projectName}
-										</p>
-										<p className="text-justify text-md">
-											{project.projectDescription}
 										</p>
 										<p className="text-justify text-md">
 											{project.projectDescription}
