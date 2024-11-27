@@ -24,7 +24,11 @@ export default function ResumeOptions() {
 	}, [user._id]);
 
 	if (fetchingUserResume) {
-		return <SpinnerComponent spinnerLabel='Fetching user resume details...' />;
+		return (
+			<Layout>
+				<SpinnerComponent spinnerLabel="Fetching user resume details..." />
+			</Layout>
+		);
 	}
 	
 	return (
@@ -38,7 +42,7 @@ export default function ResumeOptions() {
 				<div className="space-y-2 mt-3">
 					<div className="p-2">
 						<label className="font-semibold mb-2 text-2xl flex items-center">
-							<MapPin className="mr-2" /> Location:
+							📍 Location:
 						</label>
 						<input
 							type="text"
@@ -50,7 +54,7 @@ export default function ResumeOptions() {
 					</div>
 					<div className="p-2">
 						<label className="font-semibold mb-2 text-2xl flex items-center">
-							<Mail className="mr-2" /> Email:
+							📨 Email:
 						</label>
 						<input
 							type="text"
@@ -62,7 +66,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							<Book className="mr-2" /> Skills:
+							⚡️ Skills:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -73,7 +77,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							<Award className="mr-2" /> Education:
+							🏫 Education:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -90,7 +94,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							<Briefcase className="mr-2" /> Experience:
+							🏢 Experience:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -103,7 +107,9 @@ export default function ResumeOptions() {
 										<p className="text-justify text-md">
 											{exp.workDescription}
 										</p>
-										<p className='text-justify text-md'>{exp.workDescription}</p>
+										<p className="text-justify text-md">
+											{exp.workDescription}
+										</p>
 										<p>{exp.duration}</p>
 										<p>
 											<span className="font-medium">Start Date: </span>
@@ -120,7 +126,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							<MedalIcon className="mr-2" /> Projects:
+							💫 Projects:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -133,7 +139,9 @@ export default function ResumeOptions() {
 										<p className="text-justify text-md">
 											{project.projectDescription}
 										</p>
-										<p className="text-justify text-md">{project.projectDescription}</p>
+										<p className="text-justify text-md">
+											{project.projectDescription}
+										</p>
 									</div>
 								))}
 							</div>
