@@ -21,6 +21,7 @@ import useRecommendationStore from '../../store/resume-recomendation';
 import useMultiSelectStore from '../../store/useMultiSelectStore';
 import SpinnerComponent from '../../components/dashboard/loader';
 import { Navigate, useNavigate } from 'react-router-dom';
+import loaderGif from '../../assets/images/loader.gif';
 
 function UploadResume() {
 	const { user } = useAuthStore();
@@ -77,8 +78,11 @@ function UploadResume() {
 	return (
 		<div>
 			{fetchResumeRecommendations && (
-				<div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center">
-					<SpinnerComponent spinnerLabel="Fetching custom recommendation, this might take a upto 10 minutes..." />
+				<div className="fixed top-0 left-0 z-50 w-full h-full flex flex-col items-center justify-center">
+					<img src={loaderGif} alt="Loading..." width="150" height="150" />
+					<p className="mt-2 text-md font-medium">
+						Fetching custom recommendation, this might take a upto 10 minutes...
+					</p>
 				</div>
 			)}
 			<div className="max-w-lg mx-auto p-10 bg-white rounded-lg">
