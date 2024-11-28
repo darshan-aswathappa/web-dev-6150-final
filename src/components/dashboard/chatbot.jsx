@@ -46,7 +46,7 @@ export default function Chatbot() {
 	return (
 		<div className="flex flex-col h-full w-full bg-white">
 			<div className="flex-shrink-0 p-4 bg-white border-b">
-				<h2 className="text-lg font-semibold">Chatbot</h2>
+				<h2 className="text-lg font-semibold">Course chatbot</h2>
 			</div>
 			<ScrollArea className="flex-grow p-4 overflow-y-auto">
 				{messages.length < 1 && (
