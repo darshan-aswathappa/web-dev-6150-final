@@ -1,12 +1,11 @@
 import { zodResolver } from '@hookform/resolvers/zod';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { Button } from '@/components/ui/button';
 import {
 	Form,
 	FormControl,
-	FormDescription,
 	FormField,
 	FormItem,
 	FormLabel,
@@ -20,22 +19,23 @@ import MultiSelect from '../../components/upload-resume/multiSelect';
 import useRecommendationStore from '../../store/resume-recomendation';
 import useMultiSelectStore from '../../store/useMultiSelectStore';
 import SpinnerComponent from '../../components/dashboard/loader';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { Navigate } from 'react-router-dom';
 
 function UploadResume() {
 	const { user } = useAuthStore();
 	const { postResumeDetails } = useUploadResumeStore();
-    const { fetchRecommendations, hasFetched } = useRecommendationStore();
-    const { selectedOptions } = useMultiSelectStore();
-	const [fetchResumeRecommendations, setFetchResumeRecommendations] = React.useState(false);
+	const { fetchRecommendations } = useRecommendationStore();
+	const { selectedOptions } = useMultiSelectStore();
+	const [fetchResumeRecommendations, setFetchResumeRecommendations] = useState(false);
 	const [pdfPreview, setPdfPreview] = useState(null);
-	
-	if(user.resumeData && user.resumeData.length > 0) {
-		return <Navigate to="/dashboard"  replace/>
+	const [isDialogOpen, setIsDialogOpen] = useState(true); 
+
+	if (user.resumeData && user.resumeData.length > 0) {
+		return <Navigate to="/dashboard" replace />;
 	}
 
 	const formSchema = z.object({
-		resume: z.any().refine(file => file && file.length > 0, {
+		resume: z.any().refine((file) => file && file.length > 0, {
 			message: 'Please upload a resume file',
 		}),
 	});
@@ -43,22 +43,6 @@ function UploadResume() {
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 	});
-
-	async function onSubmit(values) { 
-        if (selectedOptions.length === 0) {
-            toast.error('Please select at least one subject');
-            return;
-        }
-		setFetchResumeRecommendations(true);
-	    try {
-	    	await postResumeDetails(user._id, values.resume[0]);
-	    	await fetchRecommendations(selectedOptions.join(','), user._id);
-	    } catch (error) {
-	    	toast.error('Failed to upload resume');
-	    } finally {
-			setFetchResumeRecommendations(false);
-		}
-	}
 
 	const handleFileChange = (files) => {
 		form.setValue('resume', files);
@@ -74,63 +58,101 @@ function UploadResume() {
 		}
 	};
 
+	async function onSubmit(values) {
+		if (selectedOptions.length === 0) {
+			toast.error('Please select at least one subject');
+			return;
+		}
+		setFetchResumeRecommendations(true);
+		try {
+			await postResumeDetails(user._id, values.resume[0]);
+			await fetchRecommendations(selectedOptions.join(','), user._id);
+		} catch (error) {
+			toast.error('Failed to upload resume');
+		} finally {
+			setFetchResumeRecommendations(false);
+		}
+		setIsDialogOpen(false); 
+	}
+
 	return (
 		<div>
 			{fetchResumeRecommendations && (
-				<div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center">
-					<SpinnerComponent spinnerLabel="Fetching custom recommendation, this might take a upto 10 minutes..." />
+				<div className="fixed top-0 left-0 z-50 w-full h-full flex items-center justify-center bg-black bg-opacity-50">
+					<SpinnerComponent spinnerLabel="Fetching custom recommendation, this might take up to 10 minutes..." />
 				</div>
 			)}
-			<div className="max-w-lg mx-auto p-10 bg-white rounded-lg">
-				<div className={fetchResumeRecommendations ? 'hidden' : 'block'}>
-					<Form {...form}>
-						<form onSubmit={form.handleSubmit(onSubmit)}>
-							<FormField
-								control={form.control}
-								name="resume"
-								render={({ field }) => (
-									<FormItem>
-										<FormLabel className="text-lg font-medium">
-											Upload Resume
-										</FormLabel>
-										<FormControl>
-											<Input
-												type="file"
-												accept="application/pdf"
-												onChange={e => handleFileChange(e.target.files)}
-												className="mt-2"
-											/>
-										</FormControl>
-										<FormDescription className="text-sm text-gray-500">
-											Please upload your resume in PDF format.
-										</FormDescription>
-										<FormMessage />
-									</FormItem>
+
+			{isDialogOpen && (
+				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 bg-gradient-to-br from-teal-100 to-teal-400">
+					<div
+						className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6"
+						style={{
+							backgroundColor: '#f5f7fa', 
+							color: '#1a202c',
+							border: '1px solid #e2e8f0',
+						}}
+					>
+						<div className="flex flex-col items-center mb-0	">
+							<h1 className="text-2xl font-semibold mb-0">Upload a resume</h1>
+							<h4 className="text-sm mt-0 mb-4">For best results, resume uploads should be in PDF format</h4>
+							<button
+								onClick={() => setIsDialogOpen(false)}
+								className="absolute top-4 right-4 text-gray-400 hover:text-black text-xl">
+								&times;
+							</button>
+						</div>
+						<Form {...form}>
+							<form onSubmit={form.handleSubmit(onSubmit)}>
+								<FormField
+									control={form.control}
+									name="resume"
+									render={({ field }) => (
+										<FormItem>
+											<FormLabel className="text-md font-medium">
+												Upload Resume
+											</FormLabel>
+											<FormControl>
+												<Input
+													type="file"
+													accept="application/pdf"
+													onChange={(e) => handleFileChange(e.target.files)}
+													className="mt-2"
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									)}
+								/>
+
+								{pdfPreview && (
+									<div className="my-4">
+										<embed
+											src={pdfPreview}
+											type="application/pdf"
+											width="100%"
+											height="200px"
+										/>
+									</div>
 								)}
-							/>
-							{pdfPreview && (
-								<div className="my-4">
-									<embed
-										src={pdfPreview}
-										type="application/pdf"
-										width="100%"
-										height="200px"
-									/>
+
+								<div className="mt-4">
+									<MultiSelect />
 								</div>
-							)}
-							<MultiSelect />
-							<div className="flex space-x-4">
-								<Button
-									type="submit"
-									className="w-full bg-blue-600 text-white rounded-lg mt-2"
-								>
-									Submit
-								</Button>
-							</div>
-						</form>
-					</Form>
+
+								<div className="flex justify-end mt-6">
+									<Button
+										type="submit"
+										className="bg-blue-600 text-white rounded-lg px-4 py-2"
+									>
+										Submit
+									</Button>
+								</div>
+							</form>
+						</Form>
+					</div>
 				</div>
-			</div>
+			)}
 		</div>
 	);
 }
