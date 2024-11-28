@@ -85,7 +85,6 @@ function UploadResume() {
 					</p>
 				</div>
 			)}
-
 			{isDialogOpen && (
 				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 bg-gradient-to-br from-teal-100 to-teal-400">
 					<div
@@ -127,7 +126,6 @@ function UploadResume() {
 										</FormItem>
 									)}
 								/>
-
 								{pdfPreview && (
 									<div className="my-4">
 										<embed
@@ -138,11 +136,9 @@ function UploadResume() {
 										/>
 									</div>
 								)}
-
 								<div className="mt-4">
 									<MultiSelect />
 								</div>
-
 								<div className="flex justify-end mt-6">
 									<Button
 										type="submit"
