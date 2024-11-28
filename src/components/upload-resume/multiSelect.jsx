@@ -144,9 +144,9 @@ const MultiSelect = () => {
 
 	return (
 		<div className="bg-white rounded-lg" ref={dropdownRef}>
-			<h2 className="text-xl font-semibold">
+			<h6 className="text-md font-md">
 				Select courses for recommendation: (Max 3)
-			</h2>
+			</h6>
 			<div className="relative">
 				<div
 					className="cursor-pointer px-4 py-2 rounded-lg border bg-gray-100"
