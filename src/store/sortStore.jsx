@@ -1,7 +1,7 @@
 import { create } from "zustand";
 
 const useSortStore = create(set => ({
-	sortOrder: 'high-to-low', // Default sort order
+	sortOrder: 'high-to-low',
 	toggleSortOrder: () =>
 		set(state => ({
 			sortOrder:
