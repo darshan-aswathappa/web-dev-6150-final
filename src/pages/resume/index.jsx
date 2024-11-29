@@ -3,25 +3,50 @@ import Layout from '../../layout/main';
 import useFetchUserResumeStore from "../../store/getUserResumeStore";
 import useAuthStore from '../../store/authStore';
 import SpinnerComponent from '../../components/dashboard/loader';
-import { Book, FileSpreadsheetIcon, MapPin, Mail, Award, Briefcase, MedalIcon } from 'lucide-react';
 import { Separator } from "@/components/ui/separator"
+import { Navigate, useNavigate } from 'react-router-dom';
+import {Button} from "@/components/ui/button";
+import { RefreshCwIcon, TimerReset } from 'lucide-react';
+import {
+	AlertDialog,
+	AlertDialogAction,
+	AlertDialogCancel,
+	AlertDialogContent,
+	AlertDialogDescription,
+	AlertDialogFooter,
+	AlertDialogHeader,
+	AlertDialogTitle,
+	AlertDialogTrigger,
+} from '@/components/ui/alert-dialog';
+import axios from 'axios';
+import toast from 'react-hot-toast';
+
 
 export default function ResumeOptions() {
-	const {user} = useAuthStore();
+	const {user, getUser} = useAuthStore();
 	const { userResume, fetchingUserResume, getUserResume } = useFetchUserResumeStore();
-	const [email, setEmail] = useState('');
-	const [location, setLocation] = useState('');
-		
+	const navigate = useNavigate();
+
 	React.useEffect(() => {
-		const fetchResume = async () => {
-			await getUserResume(user._id);
-			if (userResume && userResume.resume) {
-				setEmail(userResume.resume.email);
-				setLocation(userResume.resume.location);
-			}
-		};
-		fetchResume();
+		if (user.resumeData === null || user.userResumeParsedDetails === null) {
+			navigate("/upload-resume", { replace: true });
+		} else {
+			getUserResume(user._id);
+		}
 	}, [user._id]);
+
+	const handleRefresh = async () => {
+		const res = await axios.put(
+			`http://localhost:5000/reupload-resume/${user._id}`
+		);
+		toast.success('Resume deleted successfully', {
+			position: 'top-right',
+		});
+		if(res.status === 200) {
+			await getUser(user._id);
+			navigate('/upload-resume');
+		}
+	};
 
 	if (fetchingUserResume) {
 		return (
@@ -30,12 +55,37 @@ export default function ResumeOptions() {
 			</Layout>
 		);
 	}
+
+	if(user.resumeData === null || user.userResumeParsedDetails === null) {
+		return <Navigate to="/upload-resume" replace />;
+	}
 	
 	return (
 		<Layout>
-			<div className="flex">
-				<FileSpreadsheetIcon className="w-10 h-10" />
-				<h1 className="text-4xl font-semibold mb-6 pl-2">Resume</h1>
+			<div className="flex justify-between p-2">
+				<h1 className="text-4xl font-semibold mb-6">🔖 Resume</h1>
+				<AlertDialog>
+					<AlertDialogTrigger>
+						<Button variant="outline" className="shadow-none">
+							<RefreshCwIcon />
+						</Button>
+					</AlertDialogTrigger>
+					<AlertDialogContent>
+						<AlertDialogHeader>
+							<AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+							<AlertDialogDescription>
+								This action cannot be undone. This will permanently delete your
+								resume and will redirect you to upload resume screen.
+							</AlertDialogDescription>
+						</AlertDialogHeader>
+						<AlertDialogFooter>
+							<AlertDialogCancel>Cancel</AlertDialogCancel>
+							<AlertDialogAction onClick={() => handleRefresh()}>
+								Continue
+							</AlertDialogAction>
+						</AlertDialogFooter>
+					</AlertDialogContent>
+				</AlertDialog>
 			</div>
 			<Separator />
 			{userResume && userResume.resume ? (
@@ -44,29 +94,17 @@ export default function ResumeOptions() {
 						<label className="font-semibold mb-2 text-2xl flex items-center">
 							📍 Location:
 						</label>
-						<input
-							type="text"
-							value={location}
-							onChange={e => setLocation(e.target.value)}
-							className="border p-2 w-full"
-							disabled
-						/>
+						{userResume && userResume.resume.location}
 					</div>
 					<div className="p-2">
 						<label className="font-semibold mb-2 text-2xl flex items-center">
 							📨 Email:
 						</label>
-						<input
-							type="text"
-							value={email}
-							onChange={e => setLocation(e.target.value)}
-							className="border p-2 w-full"
-							disabled
-						/>
+						{userResume && userResume.resume.email}
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							⚡️ Skills:
+							 ⚡️ Skills:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -77,7 +115,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							🏫 Education:
+							 🏫 Education:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -94,7 +132,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							🏢 Experience:
+							 🏢 Experience:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">
@@ -123,7 +161,7 @@ export default function ResumeOptions() {
 					</div>
 					<div>
 						<label className="font-semibold p-2 text-2xl flex items-center">
-							💫 Projects:
+							 💫 Projects:
 						</label>
 						<Separator />
 						<div className="flex flex-wrap">

@@ -19,21 +19,24 @@ import toast from 'react-hot-toast';
 import MultiSelect from '../../components/upload-resume/multiSelect';
 import useRecommendationStore from '../../store/resume-recomendation';
 import useMultiSelectStore from '../../store/useMultiSelectStore';
-import SpinnerComponent from '../../components/dashboard/loader';
 import { Navigate, useNavigate } from 'react-router-dom';
 import loaderGif from '../../assets/images/loader.gif';
 
 function UploadResume() {
-	const { user } = useAuthStore();
+	const { user, getUser } = useAuthStore();
 	const { postResumeDetails } = useUploadResumeStore();
     const { fetchRecommendations, hasFetched } = useRecommendationStore();
     const { selectedOptions } = useMultiSelectStore();
 	const [fetchResumeRecommendations, setFetchResumeRecommendations] = React.useState(false);
 	const [pdfPreview, setPdfPreview] = useState(null);
-	
-	if(user.resumeData && user.resumeData.length > 0) {
-		return <Navigate to="/dashboard"  replace/>
-	}
+
+	const navigate = useNavigate();
+
+	// React.useEffect(() => {
+	// 	if (user.resumeData && user.resumeData.length > 0) {
+	// 		navigate('/dashboard', { replace: true });
+	// 	}
+	// }, [user._id]);
 
 	const formSchema = z.object({
 		resume: z.any().refine(file => file && file.length > 0, {
@@ -58,6 +61,7 @@ function UploadResume() {
 	    	toast.error('Failed to upload resume');
 	    } finally {
 			setFetchResumeRecommendations(false);
+			await getUser(user._id);
 		}
 	}
 

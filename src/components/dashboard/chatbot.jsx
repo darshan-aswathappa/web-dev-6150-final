@@ -31,7 +31,7 @@ export default function Chatbot() {
 	}, []);
 
 	useEffect(() => {
-		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+		messagesEndRef.current?.scrollIntoView();
 	}, [messages, loading]);
 
 	const handleSend = async () => {
@@ -46,7 +46,7 @@ export default function Chatbot() {
 	return (
 		<div className="flex flex-col h-full w-full bg-white">
 			<div className="flex-shrink-0 p-4 bg-white border-b">
-				<h2 className="text-lg font-semibold">Course chatbot</h2>
+				<h2 className="text-lg font-semibold">🌿🎓 Spring 2025 Chatbot</h2>
 			</div>
 			<ScrollArea className="flex-grow p-4 overflow-y-auto">
 				{messages.length < 1 && (
@@ -61,6 +61,17 @@ export default function Chatbot() {
 							message.author === 'user' ? 'text-right' : 'text-left'
 						}`}
 					>
+						<div
+							className={`inline-block px-2 rounded-lg max-w-full h-full ${
+								message.author === 'user'
+									? 'bg-blue-500 text-white'
+									: 'bg-gray-200'
+							}`}
+						>
+							<ReactMarkdown className={'text-sm font-normal px-1.5 mt-3'}>
+								{message.message}
+							</ReactMarkdown>
+						</div>
 						{message.author === 'user' ? (
 							<p className="m-1 text-xs font-medium text-gray-500 capitalize">
 								{user.name} - {dayjs().format('MMMM D, YYYY h:mm A')}
@@ -70,17 +81,6 @@ export default function Chatbot() {
 								Bot - {dayjs().format('MMMM D, YYYY h:mm A')}
 							</p>
 						)}
-						<div
-							className={`inline-block p-1 rounded-lg max-w-full break-words ${
-								message.author === 'user'
-									? 'bg-blue-500 text-white'
-									: 'bg-gray-200'
-							}`}
-						>
-							<ReactMarkdown className={'px-2'}>
-								{message.message}
-							</ReactMarkdown>
-						</div>
 					</div>
 				))}
 				{loading && (
@@ -106,7 +106,7 @@ export default function Chatbot() {
 						onKeyPress={e => e.key === 'Enter' && handleSend()}
 						className="shadow-none"
 					/>
-					<Button onClick={handleSend}>Send</Button>
+					<Button className="shadow-none" onClick={handleSend}>Send</Button>
 				</div>
 			</div>
 		</div>

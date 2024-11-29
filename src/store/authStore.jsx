@@ -92,6 +92,17 @@ const useAuthStore = create((set) => ({
             throw error;
         }
     },
+
+    getUser: async (userId) => {
+        set({isLoading: true, error:null});
+        try {
+            const response = await axios.get(`${API_URL}/get-user/${userId}`);
+            set({user: response.data.user, isLoading:false});
+        } catch (error) {
+            set({error: error.response.data.message || "Error getting user", isLoading:false});
+            throw error;
+        }
+    }
 }));
 
 export default useAuthStore;
