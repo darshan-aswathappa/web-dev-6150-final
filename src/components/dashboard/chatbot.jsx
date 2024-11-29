@@ -61,6 +61,17 @@ export default function Chatbot() {
 							message.author === 'user' ? 'text-right' : 'text-left'
 						}`}
 					>
+						<div
+							className={`inline-block px-2 rounded-lg max-w-full h-full ${
+								message.author === 'user'
+									? 'bg-blue-500 text-white'
+									: 'bg-gray-200'
+							}`}
+						>
+							<ReactMarkdown className={'text-sm font-normal px-1.5 mt-3'}>
+								{message.message}
+							</ReactMarkdown>
+						</div>
 						{message.author === 'user' ? (
 							<p className="m-1 text-xs font-medium text-gray-500 capitalize">
 								{user.name} - {dayjs().format('MMMM D, YYYY h:mm A')}

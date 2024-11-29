@@ -44,6 +44,7 @@ function UploadResume() {
 		resolver: zodResolver(formSchema),
 	});
 
+
 	const handleFileChange = (files) => {
 		form.setValue('resume', files);
 		if (files && files.length > 0) {
