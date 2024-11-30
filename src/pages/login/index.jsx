@@ -65,7 +65,7 @@ export default function RegistrationPage() {
 					</p>
 				</form>
 				<button onClick={() => navigate("/signup")} className="w-[90%] max-w-[320px] min-w-[280px] mt-4 text-black font-normal flex items-center justify-center whitespace-nowrap hover:bg-gray-100 py-2 md:max-w-[400px]">
-					Don't have an account? <span className="font-normal ml-1">Sign up</span>
+					Don't have an account? <span className="font-bold ml-1">Sign up</span>
 				</button>
 			</div>
 		</div>
