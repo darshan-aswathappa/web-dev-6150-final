@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Home, Settings, FileText, LogOut, ActivitySquareIcon } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'; 
@@ -11,7 +11,9 @@ export default function Sidebar() {
     const [isLogoutDialogOpen, setLogoutDialogOpen] = useState(false); 
     const {logOut} = useAuthStore();
 	const loggedInEmail = useAuthStore((state) => state.user?.email);
-
+	const {user} = useAuthStore();
+	const navigate = useNavigate();
+	
     const handleLogout = async () => {
         try {
             await logOut(); 
@@ -27,7 +29,7 @@ export default function Sidebar() {
 
     const menuItems = [
         { name: 'Home', icon: Home, path: '/dashboard' },
-        { name: 'Resume Options', icon: FileText, path: '/resume' },
+        { name: 'Resume', icon: FileText, path: '/resume' },
 		{ name: 'About Us', icon: FileText, path: '/about' },
 		{ name: 'Contact Us', icon: FileText, path: '/contact' }
     ];
@@ -35,7 +37,7 @@ export default function Sidebar() {
     const settingsItem = { name: 'Settings', icon: Settings, path: null, onClick: () => setSettingsDialogOpen(true) };
 
     return (
-			<div className="flex flex-col h-screen w-62 bg-white">
+			<div className="flex flex-col h-screen w-64 bg-white">
 				<div className="flex items-center justify-center h-20">
 					<h1 className="text-3xl font-bold text-gray-800">Logo</h1>
 				</div>
@@ -107,6 +109,22 @@ export default function Sidebar() {
 
 						<div className="w-3/4 p-6">
 							<h2 className="text-xl font-semibold mb-4">Login & Security</h2>
+							{user.isAdmin ? (
+								<div className="mb-6 flex justify-between">
+									<div>
+										<p className="text-black mb-1 font-semibold">Role</p>
+										<p className="font-medium text-gray-500 text-sm">Admin</p>
+									</div>
+									<Button variant="outline" className="shadow-none" onClick={() => navigate("/admin")}>
+										Navigate to Admin Dashboard
+									</Button>
+								</div>
+							) : (
+								<div className="mb-6">
+									<p className="text-black mb-1 font-semibold">Role</p>
+									<p className="font-medium text-gray-500 text-sm">User</p>
+								</div>
+							)}
 							<div className="mb-6">
 								<p className="text-black mb-1 font-semibold">Email</p>
 								<p className="font-medium text-gray-500 text-sm">

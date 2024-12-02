@@ -7,18 +7,17 @@ export default function Layout({ children }) {
 	const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
 	return (
-		<div>
-			<div className="flex h-screen bg-gray-100">
-				<div className="hidden md:flex">
-					<Sidebar />
-				</div>
-				<div className="md:hidden">
+		<div className="flex h-screen bg-gray-100">
+			<div className="hidden md:flex">
+				<Sidebar />
+			</div>
+			<div className="md:hidden">
 					<MobileMenu
 						isOpen={isMobileMenuOpen}
 						setIsOpen={setIsMobileMenuOpen}
 					/>
-				</div>
-				<div className="flex-1 flex flex-col overflow-hidden">
+			</div>
+			<div className="flex-1 flex flex-col overflow-hidden">
 					<header className="bg-white md:hidden">
 						<div className="px-4 py-3">
 							<button
@@ -44,11 +43,10 @@ export default function Layout({ children }) {
 					<main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-100">
 						<div className="mx-auto px-6 py-8">{children}</div>
 					</main>
-				</div>
-				<div className="hidden xl:flex md:w-80 lg:w-96 md:flex-shrink-0">
+			</div>
+			<div className="hidden xl:flex md:w-80 lg:w-96 md:flex-shrink-0">
 					<Chatbot />
-				</div>
 			</div>
 		</div>
-	);
+	)
 }

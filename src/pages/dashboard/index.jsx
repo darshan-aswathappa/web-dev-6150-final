@@ -8,13 +8,17 @@ import useSortStore from '../../store/sortStore';
 import { Toggle } from '@/components/ui/toggle';
 import { ArrowUpNarrowWide, ArrowDownNarrowWide } from 'lucide-react';
 import { Navigate } from 'react-router-dom';
+import useMultiSelectStore from '../../store/useMultiSelectStore';
 
 export default function Dashboard() {	
 	const { fetchRecommendations, isFetching, error, recommendations, hasFetched } =
 		useRecommendationStore();
 	const { user } = UseAuthStore();	
 	const { sortOrder, toggleSortOrder } = useSortStore();
+	const {SelectedOptions} = useMultiSelectStore();
 
+	console.log(SelectedOptions);
+	
 	if (user.userResumeParsedDetails === null 
 		|| user.resumeData === null 
 		|| user.resumeData === undefined 
@@ -44,8 +48,17 @@ export default function Dashboard() {
 
 	return (
 		<Layout>
-			<div className='flex justify-end pr-1'>
-				<Toggle className="font-semibold text-sm border p-3 bg-gray-50" onPressedChange={toggleSortOrder}>
+			<div className="hidden md:block text-lg text-black font-bold justify-start pl-2">
+					👋 Hello <span className='capitalize pl-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent'>{user.name}</span>, here are your courses recommendations 🔥
+			</div>
+			<div className="flex justify-between px-2 pt-2">
+				<div className="text-xs text-gray-500 font-medium flex justify-center items-center">
+					Showing {recommendations.length} recommendations based on your resume
+				</div>
+				<Toggle
+					className="font-semibold text-sm border p-3 bg-gray-50 rounded-lg"
+					onPressedChange={toggleSortOrder}
+				>
 					{sortOrder === 'high-to-low' ? (
 						<span className="flex items-center space-x-2">
 							<ArrowDownNarrowWide className="w-3" />

@@ -4,6 +4,7 @@
 	"private": true,
 	"dependencies": {
 		"@hookform/resolvers": "^3.9.1",
+		"@radix-ui/react-alert-dialog": "^1.1.2",
 		"@radix-ui/react-dialog": "^1.1.2",
 		"@radix-ui/react-label": "^2.1.0",
 		"@radix-ui/react-progress": "^1.1.0",
@@ -20,6 +21,7 @@
 		"bootstrap": "^5.3.3",
 		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.1.1",
+		"dayjs": "^1.11.13",
 		"lucide-react": "^0.460.0",
 		"material-icons": "^1.13.12",
 		"react": "^18.3.1",
