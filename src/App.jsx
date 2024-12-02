@@ -8,6 +8,8 @@ import { Toaster } from "react-hot-toast";
 import Dashboard from "./pages/dashboard";
 import Settings from "./pages/settings";
 import ResumeOptions from "./pages/resume";
+import AboutPage from "./pages/about";
+import ContactPage from "./pages/contact";
 import ChatbotPage from "./pages/chatbot";
 import IndividualPaths from "./pages/dashboard/individual";
 import SpinnerComponent from "./components/dashboard/loader";
@@ -135,6 +137,23 @@ function App() {
                     		</RedirectAuthenticatedUser>
 						}
             		/>
+
+					<Route
+						path="/about"
+						element={
+							<ProtectedRoute>
+								<AboutPage/>
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/contact"
+						element={
+							<ProtectedRoute>
+								<ContactPage/>
+							</ProtectedRoute>
+						}
+					/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
 					<Route path="*" element={<Navigate to="/dashboard" replace />} />
 				</Routes>
