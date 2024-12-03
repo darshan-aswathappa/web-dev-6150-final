@@ -56,6 +56,7 @@ export default function RegistrationPage() {
 			</div>
 			<div className="w-full lg:w-1/2 flex flex-col  justify-around items-center bg-white p-10 rounded-r-lg">
 				<h2 className="text-2xl font-bold mb-4">Welcome to NEU course bot</h2>
+				{error && (<div className="flex items-start text-red-500 font-medium">{error}</div>)}
 				<form className="w-full max-w-sm" onSubmit={handleSubmit(onSubmit)}>
 					<input className='bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("email")} type='text' placeholder='Email' />
 					{errors.email && (<div className="flex items-start text-red-500 font-medium">{errors.email.message}</div>)}
