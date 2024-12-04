@@ -22,7 +22,7 @@ import { Navigate, useNavigate } from 'react-router-dom';
 import loaderGif from '../../assets/images/loader.gif';
 
 function UploadResume() {
-	const { user, getUser } = useAuthStore();
+	const { user, getUser, logOut } = useAuthStore();
 	const { postResumeDetails } = useUploadResumeStore();
 	const { fetchRecommendations } = useRecommendationStore();
 	const { selectedOptions } = useMultiSelectStore();
@@ -76,6 +76,15 @@ function UploadResume() {
 		setIsDialogOpen(false); 
 	}
 
+	async function handleLogout(e) {
+		e.preventDefault();
+		try {
+			await logOut();
+		} catch (error) {
+			console.error(error);
+		}
+	}
+
 	return (
 		<div>
 			{fetchResumeRecommendations && (
@@ -110,7 +119,7 @@ function UploadResume() {
 								<FormField
 									control={form.control}
 									name="resume"
-									render={({ field }) => (
+									render={({field}) => (
 										<FormItem>
 											<FormLabel className="text-md font-medium">
 												Upload Resume
@@ -123,7 +132,7 @@ function UploadResume() {
 													className="mt-2"
 												/>
 											</FormControl>
-											<FormMessage />
+											<FormMessage/>
 										</FormItem>
 									)}
 								/>
@@ -138,9 +147,16 @@ function UploadResume() {
 									</div>
 								)}
 								<div className="mt-4">
-									<MultiSelect />
+									<MultiSelect/>
 								</div>
-								<div className="flex justify-end mt-6">
+								<div className="flex justify-content-between mt-6">
+
+									<Button
+										className="bg-orange-500 text-white rounded-lg px-4 py-2"
+									 onClick={handleLogout}>
+										Logout
+									</Button>
+
 									<Button
 										type="submit"
 										className="bg-blue-600 text-white rounded-lg px-4 py-2"
@@ -148,6 +164,8 @@ function UploadResume() {
 										Submit
 									</Button>
 								</div>
+
+
 							</form>
 						</Form>
 					</div>
