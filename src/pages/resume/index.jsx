@@ -37,7 +37,7 @@ export default function ResumeOptions() {
 
 	const handleRefresh = async () => {
 		const res = await axios.put(
-			`http://localhost:5000/reupload-resume/${user._id}`
+			`http://165.22.15.114/reupload-resume/${user._id}`
 		);
 		toast.success('Resume deleted successfully', {
 			position: 'top-right',
