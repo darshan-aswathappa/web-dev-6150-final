@@ -8,6 +8,9 @@
     background-color: rgba(255, 255, 255, 0);
     position: relative;
     z-index: 1;
+        background: linear-gradient(to bottom left, #42adaa 0%, #fff 60%);
+
+
 }
 
 
@@ -23,9 +26,10 @@
     letter-spacing: 1px;
     text-transform: uppercase;
     cursor: pointer;
-    border-radius: 8px;
-    padding: .75rem 6rem;
+    border-radius: 22px;
+    padding: .65rem 6rem;
     font-weight: 700;
+    font-size: 1rem;
     transition: background-color .425s cubic-bezier(1,.053,.25,1);
     box-shadow: 0 2px 11px #0003;
 }
@@ -43,10 +47,11 @@
     font-weight: 600;
     line-height: 1.1;
     color: #19b8b3;
-    background: linear-gradient(180deg, #1ae8e3, #17d2cd);
+    /*background: linear-gradient(180deg, #1ae8e3, #17d2cd);*/
+    background: linear-gradient(180deg, #000, #17d2cd);
     -webkit-background-clip: text; /* Clip the background image to the shape of the text */
     -webkit-text-fill-color: transparent;
-    margin-top:-55px;
+    margin-top:-25px;
     text-align: center;
 }
 
@@ -57,7 +62,8 @@
     font-weight: 600;
     line-height: 1.1;
     color: #35b2e6;
-    background: linear-gradient(180deg, #57d3fb, #1fe6e6);
+    /*background: linear-gradient(180deg, #57d3fb, #1fe6e6);*/
+    background: linear-gradient(180deg, #17d2cd, #42adaa);
     -webkit-background-clip: text;/* Clip the background image to the shape of the text */
     -webkit-text-fill-color: transparent;
 }

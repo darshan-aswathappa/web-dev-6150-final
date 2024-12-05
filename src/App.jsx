@@ -58,12 +58,8 @@ function App() {
     return (
 			<div className="font-ibm">
 				<Routes>
-					<Route
-						path="/"
-						element={
-								<HomePage />
-						}
-					/>
+					<Route path="/" element={<HomePage />}/>
+					<Route path="/about" element={<AboutPage />}/>
 					<Route
 						path="/dashboard"
 						element={
@@ -157,17 +153,13 @@ function App() {
 					<Route
 						path="/about"
 						element={
-							<ProtectedRoute>
 								<AboutPage/>
-							</ProtectedRoute>
 						}
 					/>
 					<Route
 						path="/contact"
 						element={
-							<ProtectedRoute>
 								<ContactPage/>
-							</ProtectedRoute>
 						}
 					/>
 					<Route path="/verify-email" element={<VerifyEmail />} />

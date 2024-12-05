@@ -1,9 +1,12 @@
 import React from 'react';
 import "./home-section-welcome.css"
+import Navbar from "@/pages/home/navbar";
 
 const HomeSectionWelcome = () => {
     return (
-        <div className="home-section-wrapper ">
+        <>
+            <Navbar></Navbar>
+        <div className="home-section-wrapper " id="welcome">
 
                     <h1 className="section-welcome-heading-1">Smart Course Recommendations</h1>
                     <h1 className="section-welcome-heading-2">Made Easy</h1>
@@ -15,6 +18,7 @@ const HomeSectionWelcome = () => {
 
                     <a href="/login" className="btn btn-start">Get Started</a>
         </div>
+            </>
     )
 }
 
