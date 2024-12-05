@@ -17,13 +17,15 @@ import ForgotPasswordPage from "./pages/forgot-password";
 import ResetPasswordPage from "./pages/reset-password";
 import UploadResume from "./pages/upload-resume/upload";
 import AdminViewAllUsersPage from "./pages/admin";
+import HomePage from "@/pages/home";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
     const { isAuthenticated, user } = useAuthStore();
 
     if (!isAuthenticated) {
-        return <Navigate to='/login' replace />;
+        // return <Navigate to='/login' replace />;
+        return <Navigate to='/' replace />;
     }
 
     if (!user.isVerified) {
@@ -56,6 +58,8 @@ function App() {
     return (
 			<div className="font-ibm">
 				<Routes>
+					<Route path="/" element={<HomePage />}/>
+					<Route path="/about" element={<AboutPage />}/>
 					<Route
 						path="/dashboard"
 						element={
@@ -149,17 +153,13 @@ function App() {
 					<Route
 						path="/about"
 						element={
-							<ProtectedRoute>
 								<AboutPage/>
-							</ProtectedRoute>
 						}
 					/>
 					<Route
 						path="/contact"
 						element={
-							<ProtectedRoute>
 								<ContactPage/>
-							</ProtectedRoute>
 						}
 					/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
