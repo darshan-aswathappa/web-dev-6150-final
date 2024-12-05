@@ -1,5 +1,6 @@
 services:
   frontend-recommendation-app:
+    image: darshanaswath/frontend-recommendation-app:latest
     build:
       context: .
       dockerfile: Dockerfile
