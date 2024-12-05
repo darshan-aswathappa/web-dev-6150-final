@@ -42,7 +42,7 @@ export default function ForgotPasswordPage() {
   return (
     <div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-teal-100 to-teal-400 p-6">
       <div className="absolute top-4 left-4 text-black text-2xl font-bold">
-        NEU Course BOT
+        CourseCraft
       </div>
 
       {isEmailSent ? (

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, Settings, FileText, LogOut, ActivitySquareIcon } from 'lucide-react';
+import { Home, Settings, FileText, LogOut, ActivitySquareIcon, Contact, LucideMessageSquareMore, GraduationCap } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'; 
 import useAuthStore from '../../store/authStore';
@@ -30,8 +30,8 @@ export default function Sidebar() {
     const menuItems = [
         { name: 'Home', icon: Home, path: '/dashboard' },
         { name: 'Resume', icon: FileText, path: '/resume' },
-		{ name: 'About Us', icon: FileText, path: '/about' },
-		{ name: 'Contact Us', icon: FileText, path: '/contact' }
+		{ name: 'About Us', icon: LucideMessageSquareMore, path: '/about' },
+		{ name: 'Contact Us', icon: Contact, path: '/contact' }
     ];
 
     const settingsItem = { name: 'Settings', icon: Settings, path: null, onClick: () => setSettingsDialogOpen(true) };
@@ -39,7 +39,10 @@ export default function Sidebar() {
     return (
 			<div className="flex flex-col h-screen w-64 bg-white">
 				<div className="flex items-center justify-center h-20">
-					<h1 className="text-3xl font-bold text-gray-800">Logo</h1>
+					<h1 className="text-3xl font-bold text-gray-800">
+						<GraduationCap className="mr-2 w-8 h-8 opacity-80" />
+						CourseCraft
+					</h1>
 				</div>
 				<nav className="flex-grow">
 					<ul className="flex flex-col py-4 px-4 space-y-2">
@@ -115,7 +118,11 @@ export default function Sidebar() {
 										<p className="text-black mb-1 font-semibold">Role</p>
 										<p className="font-medium text-gray-500 text-sm">Admin</p>
 									</div>
-									<Button variant="outline" className="shadow-none" onClick={() => navigate("/admin")}>
+									<Button
+										variant="outline"
+										className="shadow-none"
+										onClick={() => navigate('/admin')}
+									>
 										Navigate to Admin Dashboard
 									</Button>
 								</div>

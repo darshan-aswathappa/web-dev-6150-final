@@ -40,7 +40,7 @@ export default function ResetPasswordPage() {
   return (
 		<div className="flex flex-col items-center justify-center h-screen bg-gradient-to-br from-teal-100 to-teal-400 p-6">
 			<div className="absolute top-4 left-4 text-black text-2xl font-bold">
-				NEU Course BOT
+				CourseCraft
 			</div>
 
 			<div className="w-full max-w-md bg-white shadow-md rounded-lg p-8">
