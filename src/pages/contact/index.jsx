@@ -79,24 +79,23 @@ export default function Contact() {
 			<div className="max-w-7xl mx-auto px-4 w-full">
 				<div className="flex flex-col lg:flex-row gap-10">
 					<div className="w-full lg:w-1/2 space-y-6">
-						<h1 className="text-5xl font-semibold mt-6 text-white">Contact Us</h1>
+						<h1 className="text-5xl font-semibold mt-6 text-white">
+							Contact Us
+						</h1>
 						<p className="text-lg text-white">
 							We would love to hear from you! If you have any questions or
 							feedback, please reach out to us. We strive to respond as quickly
 							as possible.
 						</p>
 						<div>
-							<label
-								htmlFor="email"
-								className="text-lg font-medium text-white"
-							>
+							<label htmlFor="email" className="text-lg font-medium text-white">
 								Email:
 							</label>
 							<a
-								href="mailto:huns.n@northeastern.edu"
+								href="mailto:contact@coursecraft.com"
 								className="text-lg font-medium text-black hover:underline block text-white"
 							>
-								huns.n@northeastern.edu
+								contact@coursecraft.com
 							</a>
 						</div>
 					</div>

@@ -39,10 +39,10 @@ export default function Sidebar() {
     return (
 			<div className="flex flex-col h-screen w-64 bg-white">
 				<div className="flex items-center justify-center h-20">
-					<h1 className="text-3xl font-bold text-gray-800">
+					<div className="text-3xl font-bold text-gray-800 flex flex-row">
 						<GraduationCap className="mr-2 w-8 h-8 opacity-80" />
 						CourseCraft
-					</h1>
+					</div>
 				</div>
 				<nav className="flex-grow">
 					<ul className="flex flex-col py-4 px-4 space-y-2">
