@@ -47,6 +47,7 @@ export default function RegistrationPage() {
 				</h2>
 				<h3 className = "text-3xl font-normal mb-0"> Welcome!</h3>
 				<h6 className = "text-sm font-normal mt-0 mb-4 text-center"> Create an account to get started</h6>
+				{error && <div className="flex items-start text-red-500 font-medium">{error}</div>}
 				<form className="w-full max-w-sm mt-2 " onSubmit={handleSubmit(onSubmit)}>
 					<input className='bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("email")} type='text' placeholder='Email' />
 					{errors.email && (<div className="flex items-start text-red-500 font-medium">{errors.email.message}</div>)}
