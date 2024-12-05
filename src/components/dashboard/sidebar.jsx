@@ -30,6 +30,8 @@ export default function Sidebar() {
     const menuItems = [
         { name: 'Home', icon: Home, path: '/dashboard' },
         { name: 'Resume', icon: FileText, path: '/resume' },
+		{ name: 'About Us', icon: FileText, path: '/about' },
+		{ name: 'Contact Us', icon: FileText, path: '/contact' }
     ];
 
     const settingsItem = { name: 'Settings', icon: Settings, path: null, onClick: () => setSettingsDialogOpen(true) };

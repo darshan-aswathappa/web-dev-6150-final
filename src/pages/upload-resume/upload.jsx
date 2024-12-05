@@ -29,6 +29,7 @@ function UploadResume() {
 	const [fetchResumeRecommendations, setFetchResumeRecommendations] = useState(false);
 	const [pdfPreview, setPdfPreview] = useState(null);
 	const [isDialogOpen, setIsDialogOpen] = useState(true); 
+	const navigate = useNavigate();
 
 	if (user.resumeData && user.resumeData.length > 0) {
 		return <Navigate to="/dashboard" replace />;
@@ -43,7 +44,6 @@ function UploadResume() {
 	const form = useForm({
 		resolver: zodResolver(formSchema),
 	});
-
 
 	const handleFileChange = (files) => {
 		form.setValue('resume', files);
@@ -72,8 +72,10 @@ function UploadResume() {
 			toast.error('Failed to upload resume');
 		} finally {
 			setFetchResumeRecommendations(false);
+			await getUser(user._id);
+			window.location.reload();
 		}
-		setIsDialogOpen(false); 
+		setIsDialogOpen(false);
 	}
 
 	return (
@@ -87,69 +89,74 @@ function UploadResume() {
 				</div>
 			)}
 			{isDialogOpen && (
-				<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 bg-gradient-to-br from-teal-100 to-teal-400">
-					<div
-						className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6"
-						style={{
-							backgroundColor: '#f5f7fa', 
-							color: '#1a202c',
-							border: '1px solid #e2e8f0',
-						}}
-					>
-						<div className="flex flex-col items-center mb-0	">
-							<h1 className="text-2xl font-semibold mb-0">Upload a resume</h1>
-							<h4 className="text-sm mt-0 mb-4">For best results, resume uploads should be in PDF format</h4>
-							<button
-								onClick={() => setIsDialogOpen(false)}
-								className="absolute top-4 right-4 text-gray-400 hover:text-black text-xl">
-								&times;
-							</button>
-						</div>
-						<Form {...form}>
-							<form onSubmit={form.handleSubmit(onSubmit)}>
-								<FormField
-									control={form.control}
-									name="resume"
-									render={({ field }) => (
-										<FormItem>
-											<FormLabel className="text-md font-medium">
-												Upload Resume
-											</FormLabel>
-											<FormControl>
-												<Input
-													type="file"
-													accept="application/pdf"
-													onChange={(e) => handleFileChange(e.target.files)}
-													className="mt-2"
-												/>
-											</FormControl>
-											<FormMessage />
-										</FormItem>
+				<div className={fetchResumeRecommendations ? 'hidden' : 'block'}>
+					<div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 bg-gradient-to-br from-teal-100 to-teal-400">
+						<div
+							className="bg-white rounded-lg shadow-lg max-w-2xl w-full p-6"
+							style={{
+								backgroundColor: '#f5f7fa',
+								color: '#1a202c',
+								border: '1px solid #e2e8f0',
+							}}
+						>
+							<div className="flex flex-col items-center mb-0	">
+								<h1 className="text-2xl font-semibold mb-0">Upload a resume</h1>
+								<h4 className="text-sm mt-0 mb-4">
+									For best results, resume uploads should be in PDF format
+								</h4>
+								<button
+									onClick={() => setIsDialogOpen(false)}
+									className="absolute top-4 right-4 text-gray-400 hover:text-black text-xl"
+								>
+									&times;
+								</button>
+							</div>
+							<Form {...form}>
+								<form onSubmit={form.handleSubmit(onSubmit)}>
+									<FormField
+										control={form.control}
+										name="resume"
+										render={({ field }) => (
+											<FormItem>
+												<FormLabel className="text-md font-medium">
+													Upload Resume
+												</FormLabel>
+												<FormControl>
+													<Input
+														type="file"
+														accept="application/pdf"
+														onChange={e => handleFileChange(e.target.files)}
+														className="mt-2"
+													/>
+												</FormControl>
+												<FormMessage />
+											</FormItem>
+										)}
+									/>
+									{pdfPreview && (
+										<div className="my-4">
+											<embed
+												src={pdfPreview}
+												type="application/pdf"
+												width="100%"
+												height="200px"
+											/>
+										</div>
 									)}
-								/>
-								{pdfPreview && (
-									<div className="my-4">
-										<embed
-											src={pdfPreview}
-											type="application/pdf"
-											width="100%"
-											height="200px"
-										/>
+									<div className="mt-4">
+										<MultiSelect />
 									</div>
-								)}
-								<div className="mt-4">
-									<MultiSelect />
-								</div>
-								<div className="flex justify-end mt-6">
-									<Button
-										type="submit"
-										className="bg-blue-600 text-white rounded-lg px-4 py-2"
-									>
-										Submit
-									</Button>
-								</div>
-							</form>
-						</Form>
+									<div className="flex justify-end mt-6">
+										<Button
+											type="submit"
+											className="bg-blue-600 text-white rounded-lg px-4 py-2"
+										>
+											Submit
+										</Button>
+									</div>
+								</form>
+							</Form>
+						</div>
 					</div>
 				</div>
 			)}
