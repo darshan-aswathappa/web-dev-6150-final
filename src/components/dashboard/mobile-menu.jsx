@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Home, Settings, FileText, MessageCircle, LogOut } from 'lucide-react';
+import { Home, Settings, FileText, MessageCircle, LogOut, LucideMessageSquareMore, Contact } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
 	Sheet,
@@ -18,6 +18,8 @@ export default function MobileMenu({ isOpen, setIsOpen }) {
 		{ name: 'Home', icon: Home, path: '/dashboard' },
 		{ name: 'Resume', icon: FileText, path: '/resume' },
 		{ name: 'Chatbot', icon: MessageCircle, path: '/chatbot' },
+		{ name: 'About Us', icon: LucideMessageSquareMore, path: '/about' },
+		{ name: 'Contact Us', icon: Contact, path: '/contact' },
 	];
 
 	const handleLogout = async () => {

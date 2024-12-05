@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { Home, Settings, FileText, LogOut, ActivitySquareIcon } from 'lucide-react';
+import { Home, Settings, FileText, LogOut, ActivitySquareIcon, Contact, LucideMessageSquareMore } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'; 
 import useAuthStore from '../../store/authStore';
@@ -30,8 +30,8 @@ export default function Sidebar() {
     const menuItems = [
         { name: 'Home', icon: Home, path: '/dashboard' },
         { name: 'Resume', icon: FileText, path: '/resume' },
-		{ name: 'About Us', icon: FileText, path: '/about' },
-		{ name: 'Contact Us', icon: FileText, path: '/contact' }
+		{ name: 'About Us', icon: LucideMessageSquareMore, path: '/about' },
+		{ name: 'Contact Us', icon: Contact, path: '/contact' }
     ];
 
     const settingsItem = { name: 'Settings', icon: Settings, path: null, onClick: () => setSettingsDialogOpen(true) };
