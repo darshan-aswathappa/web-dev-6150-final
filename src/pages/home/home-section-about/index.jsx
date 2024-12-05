@@ -1,21 +1,25 @@
 import React from 'react';
-import "./home-section-tools.css"
+import "./home-section-about.css"
 
-const HomeSectionTools = () => {
+const HomeSectionAbout = () => {
     const tools = [
         {
+            id:1,
             toolName:'Smart Resume Analysis',
             image:'../../../assets/images-v2/smartanalysis.webp',
             description:'In-depth analysis of resume content, skills, and experience.'
         },{
+            id:2,
             toolName:'Personalized Recommendations',
             image:'../../../assets/images-v2/recommendations.webp',
             description: 'Provides customized improvement suggestions based on your resume and expectations.'
         },{
+            id:3,
             toolName:'Reasons for the Recommendation',
             image:'../../../assets/images-v2/optimization.webp',
             description: 'Provides insights into the reasons for the recommendation.'
         },{
+            id:4,
             toolName:'Increase Success in Study Plan ',
             image:'../../../assets/images-v2/successrate.webp',
             description: 'Enhances your chances of success in your career plan through AI-driven recommendations.'
@@ -49,4 +53,4 @@ const HomeSectionTools = () => {
     )
 }
 
-export default HomeSectionTools
+export default HomeSectionAbout

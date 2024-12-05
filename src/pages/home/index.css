@@ -28,10 +28,10 @@ code {
   z-index: -1;
 }
 
-.navbar,footer,main {
-  position: relative;
-  z-index: 1;
-}
+/*.navbar,footer,main {*/
+/*  position: relative;*/
+/*  z-index: 1;*/
+/*}*/
 
 .footer-wrapper{
   justify-content: center;
@@ -53,3 +53,4 @@ code {
 .footer-link:hover,.footer-text a:hover{
   color: #4bb7db;
 }
+
