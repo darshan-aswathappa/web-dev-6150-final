@@ -15,7 +15,9 @@ export default function Sidebar() {
 	const loggedInEmail = useAuthStore((state) => state.user?.email);
 	const {user} = useAuthStore();
 	const navigate = useNavigate();
-	const DELETE_URI = import.meta.env.DEV ? 'http://localhost:3000' : 'http://137.184.214.177';
+	const DELETE_URI = import.meta.env.DEV
+		? 'http://localhost:3000'
+		: 'http://159.203.135.38';
 
     const handleLogout = async () => {
         try {

@@ -39,7 +39,7 @@ export default function ResumeOptions() {
 		const res = await axios.put(
 			import.meta.env.DEV
 				? `http://localhost:3000/reupload-resume/${user._id}`
-				: `http://137.184.214.177/reupload-resume/${user._id}`
+				: `http://159.203.135.38/reupload-resume/${user._id}`
 		);
 		toast.success('Resume deleted successfully', {
 			position: 'top-right',
