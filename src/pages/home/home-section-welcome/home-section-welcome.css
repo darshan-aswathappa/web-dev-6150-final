@@ -1,0 +1,87 @@
+.home-section-wrapper {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0);
+    position: relative;
+    z-index: 1;
+}
+
+
+.btn-start{
+    /*color: #fff;*/
+    /*border-color:orange;*/
+    /*background-color: orange;*/
+    /*font-weight: bold;*/
+    border: 1px solid #292927;
+    background-color: #373535;
+    color: #fff;
+    text-align: center;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: .75rem 6rem;
+    font-weight: 700;
+    transition: background-color .425s cubic-bezier(1,.053,.25,1);
+    box-shadow: 0 2px 11px #0003;
+}
+
+.btn-start:hover{
+    color: #1e1e1e;
+    border-color:#1e1e1e;
+    background-color: #fff;
+}
+
+.section-welcome-heading-1 {
+    text-transform: uppercase;
+    font-size: 80px;
+    font-family: Jost, sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #19b8b3;
+    background: linear-gradient(180deg, #1ae8e3, #17d2cd);
+    -webkit-background-clip: text; /* Clip the background image to the shape of the text */
+    -webkit-text-fill-color: transparent;
+    margin-top:-55px;
+    text-align: center;
+}
+
+.section-welcome-heading-2{
+    text-transform: uppercase;
+    font-size: 80px;
+    font-family: Jost, sans-serif;
+    font-weight: 600;
+    line-height: 1.1;
+    color: #35b2e6;
+    background: linear-gradient(180deg, #57d3fb, #1fe6e6);
+    -webkit-background-clip: text;/* Clip the background image to the shape of the text */
+    -webkit-text-fill-color: transparent;
+}
+
+.section-welcome-description{
+    font-family: Montserrat, sans-serif;
+    color: #1b1b1b;
+    font-size: 2rem;
+    font-weight: 700;
+    unicode-bidi: isolate;
+    margin-top:30px;
+}
+
+.section-welcome-text {
+    font-size: 1.5rem;
+    line-height: 1.2;
+    font-weight: 600;
+    color:#444;
+    font-family: Montserrat, sans-serif;
+    unicode-bidi: isolate;
+    text-align: center;
+    margin-bottom: 45px;
+}
+.margin-scale-22{
+    margin-left:22%;
+    margin-right:22%;
+}
