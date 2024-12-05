@@ -49,7 +49,11 @@ export default function Dashboard() {
 	return (
 		<Layout>
 			<div className="hidden md:block text-lg text-black font-bold justify-start pl-2">
-					👋 Hello <span className='capitalize pl-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent'>{user.name}</span>, here are your courses recommendations 🔥
+				👋 Hello{' '}
+				<span className="capitalize pl-1 bg-gradient-to-r from-purple-400 via-pink-500 to-red-500 bg-clip-text text-transparent">
+					{user.name}
+				</span>
+				, here are your courses recommendations 🔥
 			</div>
 			<div className="flex justify-between px-2 pt-2">
 				<div className="text-xs text-gray-500 font-medium flex justify-center items-center">
@@ -62,12 +66,12 @@ export default function Dashboard() {
 					{sortOrder === 'high-to-low' ? (
 						<span className="flex items-center space-x-2">
 							<ArrowDownNarrowWide className="w-3" />
-							<span>High to Low</span>
+							<span className="hidden md:block">High to Low</span>
 						</span>
 					) : (
 						<span className="flex items-center space-x-2">
 							<ArrowUpNarrowWide className="w-3" />
-							<span>Low to High</span>
+							<span className="hidden md:block">Low to High</span>
 						</span>
 					)}
 				</Toggle>
