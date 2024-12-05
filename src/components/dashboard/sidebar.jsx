@@ -4,16 +4,19 @@ import { Home, Settings, FileText, LogOut, ActivitySquareIcon, Contact, LucideMe
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogFooter } from '@/components/ui/dialog'; 
 import useAuthStore from '../../store/authStore';
+import axios from 'axios';
 
 export default function Sidebar() {
     const location = useLocation();
     const [isSettingsDialogOpen, setSettingsDialogOpen] = useState(false); 
     const [isLogoutDialogOpen, setLogoutDialogOpen] = useState(false); 
+    const [isDeleteDialogOpen, setDeleteDialogOpen] = useState(false);
     const {logOut} = useAuthStore();
 	const loggedInEmail = useAuthStore((state) => state.user?.email);
 	const {user} = useAuthStore();
 	const navigate = useNavigate();
-	
+	const DELETE_URI = import.meta.env.DEV ? 'http://localhost:3000' : 'http://137.184.214.177';
+
     const handleLogout = async () => {
         try {
             await logOut(); 
@@ -23,8 +26,14 @@ export default function Sidebar() {
         }
     };
 
-    const handleDeleteAccount = () => {
-        console.log("Trigger delete account functionality"); 
+    const handleDeleteAccount = async () => {
+        try {
+            await axios.delete(`${DELETE_URI}/api/auth/deleteUser/${user._id}`);
+            setDeleteDialogOpen(false);
+            logOut();
+        } catch (error) {
+            console.error(error);
+        }
     };
 
     const menuItems = [
@@ -142,7 +151,7 @@ export default function Sidebar() {
 								<p className="flex-grow text-black font-semibold">
 									Delete My Account
 								</p>
-								<Button variant="destructive" onClick={handleDeleteAccount}>
+								<Button variant="destructive" onClick={() => setDeleteDialogOpen(true)}>
 									Delete My Account
 								</Button>
 							</div>
@@ -167,6 +176,30 @@ export default function Sidebar() {
 								variant="outline"
 								className="shadow-none"
 								onClick={handleLogout}
+							>
+								Yes
+							</Button>
+						</DialogFooter>
+					</DialogContent>
+				</Dialog>
+
+				<Dialog open={isDeleteDialogOpen} onOpenChange={setDeleteDialogOpen}>
+					<DialogContent>
+						<DialogHeader>
+							<DialogTitle>Are you sure you want to delete your account?</DialogTitle>
+						</DialogHeader>
+						<DialogFooter>
+							<Button
+								className="shadow-none"
+								variant="destructive"
+								onClick={() => setDeleteDialogOpen(false)}
+							>
+								No
+							</Button>
+							<Button
+								variant="outline"
+								className="shadow-none"
+								onClick={handleDeleteAccount}
 							>
 								Yes
 							</Button>
