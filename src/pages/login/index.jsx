@@ -33,7 +33,7 @@ export default function RegistrationPage() {
 	return(
 		<div className="flex flex-col lg:flex-row h-screen p-12 bg-[#f2f4f6] bg-[url('/src/assets/images/login_1.png')] bg-cover bg-center">
 			<div className="hidden lg:flex lg:w-1/2 flex-col justify-between items-start p-8 border-5 border-white text-center
-			text-white relative bg-white rounded-l-3xl relative">
+			text-white relative bg-white rounded-l-3xl">
 				<img src={loginImage} alt="Course Bot Illustration" className="absolute top-0 left-0 w-full h-full object-cover rounded-3xl  z-0 p-1" />
 				<p className=" absolute bottom-8 text-3xl mb-4 text-left font-normal font-serif tracking-tight leading-snug text-white z-10">
 					<span className="block">Smart Course Recommendations,</span>
