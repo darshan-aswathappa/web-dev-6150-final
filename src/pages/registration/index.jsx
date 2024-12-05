@@ -42,11 +42,14 @@ export default function RegistrationPage() {
 			
 			<div className="w-full lg:w-1/2 flex flex-col  justify-around items-center bg-white p-10 lg:rounded-r-3xl space-y-16">
 				<h2 className="text-2xl flex font-normal mb-4 ">
-					<GraduationCap className = "mr-2 w-8 h-8 opacity-80"/>
-					CourseCraft
+					{/*<GraduationCap className = "mr-2 w-8 h-8 opacity-80"/>*/}
+					{/*CourseCraft*/}
+					<a href="/" className="text-3xl flex mb-0 text-black no-underline">
+						<GraduationCap className="mr-2 w-8 h-8 opacity-80"/>CourseCraft
+					</a>
 				</h2>
-				<h3 className = "text-3xl font-normal mb-0"> Welcome!</h3>
-				<h6 className = "text-sm font-normal mt-0 mb-4 text-center"> Create an account to get started</h6>
+				<h3 className="text-3xl font-normal mb-0"> Welcome!</h3>
+				<h6 className="text-sm font-normal mt-0 mb-4 text-center"> Create an account to get started</h6>
 				{error && <div className="flex items-start text-red-500 font-medium">{error}</div>}
 				<form className="w-full max-w-sm mt-2 " onSubmit={handleSubmit(onSubmit)}>
 					<input className='bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' {...register("email")} type='text' placeholder='Email' />
