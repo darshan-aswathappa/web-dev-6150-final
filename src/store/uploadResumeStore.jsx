@@ -21,6 +21,9 @@ const useUploadResumeStore = create(set => ({
 								},
 							}
 						);
+
+            console.log("=============")
+            console.log(response);
             set({ resume: response.data , isFetched: true});
         } catch (error) {
             console.error(error);
