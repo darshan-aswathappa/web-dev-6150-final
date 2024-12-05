@@ -24,8 +24,7 @@ const ProtectedRoute = ({ children }) => {
     const { isAuthenticated, user } = useAuthStore();
 
     if (!isAuthenticated) {
-        // return <Navigate to='/login' replace />;
-        return <Navigate to='/home' replace />;
+        return <Navigate to='/login' replace />;
     }
 
     if (!user.isVerified) {
@@ -58,7 +57,7 @@ function App() {
     return (
 			<div className="font-ibm">
 				<Routes>
-					<Route path="/home" element={<HomePage />}/>
+					<Route path="/" element={<HomePage />}/>
 					<Route
 						path="/dashboard"
 						element={
