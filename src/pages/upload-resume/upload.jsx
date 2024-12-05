@@ -73,9 +73,9 @@ function UploadResume() {
 		} finally {
 			setFetchResumeRecommendations(false);
 			await getUser(user._id);
+			window.location.reload();
 		}
 		setIsDialogOpen(false);
-		window.location.reload();
 	}
 
 	return (

@@ -161,6 +161,22 @@ function App() {
 							</ProtectedRoute>
 						}
 					/>
+					<Route
+						path="/about"
+						element={
+							<ProtectedRoute>
+								<AboutPage/>
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/contact"
+						element={
+							<ProtectedRoute>
+								<ContactPage/>
+							</ProtectedRoute>
+						}
+					/>
 					<Route path="/verify-email" element={<VerifyEmail />} />
 					<Route path="*" element={<Navigate to="/dashboard" replace />} />
 				</Routes>
