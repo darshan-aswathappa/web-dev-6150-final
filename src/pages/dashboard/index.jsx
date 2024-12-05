@@ -15,9 +15,6 @@ export default function Dashboard() {
 		useRecommendationStore();
 	const { user } = UseAuthStore();	
 	const { sortOrder, toggleSortOrder } = useSortStore();
-	const {SelectedOptions} = useMultiSelectStore();
-
-	console.log(SelectedOptions);
 	
 	if (user.userResumeParsedDetails === null 
 		|| user.resumeData === null 
