@@ -17,7 +17,7 @@ import ForgotPasswordPage from "./pages/forgot-password";
 import ResetPasswordPage from "./pages/reset-password";
 import UploadResume from "./pages/upload-resume/upload";
 import AdminViewAllUsersPage from "./pages/admin";
-import HomePage from "@/pages/home";
+import HomePage from "./pages/home";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
@@ -25,7 +25,7 @@ const ProtectedRoute = ({ children }) => {
 
     if (!isAuthenticated) {
         // return <Navigate to='/login' replace />;
-        return <Navigate to='/' replace />;
+        return <Navigate to='/home' replace />;
     }
 
     if (!user.isVerified) {
@@ -58,7 +58,7 @@ function App() {
     return (
 			<div className="font-ibm">
 				<Routes>
-					<Route path="/" element={<HomePage />}/>
+					<Route path="/home" element={<HomePage />}/>
 					<Route path="/about" element={<AboutPage />}/>
 					<Route
 						path="/dashboard"
@@ -148,12 +148,6 @@ function App() {
 							<ProtectedRoute>
 								<AdminViewAllUsersPage />
 							</ProtectedRoute>
-						}
-					/>
-					<Route
-						path="/about"
-						element={
-								<AboutPage/>
 						}
 					/>
 					<Route
