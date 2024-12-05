@@ -25,7 +25,7 @@ const ProtectedRoute = ({ children }) => {
 
     if (!isAuthenticated) {
         // return <Navigate to='/login' replace />;
-        return <Navigate to='/' replace />;
+        return <Navigate to='/home' replace />;
     }
 
     if (!user.isVerified) {
@@ -58,8 +58,7 @@ function App() {
     return (
 			<div className="font-ibm">
 				<Routes>
-					<Route path="/" element={<HomePage />}/>
-					<Route path="/about" element={<AboutPage />}/>
+					<Route path="/home" element={<HomePage />}/>
 					<Route
 						path="/dashboard"
 						element={
