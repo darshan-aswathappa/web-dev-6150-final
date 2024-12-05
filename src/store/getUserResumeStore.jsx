@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_URL = "http://165.22.15.114";
+const API_URL = 'http://137.184.214.177';
 
 axios.defaults.withCredentials = true;
 
