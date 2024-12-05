@@ -9,7 +9,7 @@ RUN npm install
 # Copy the rest of the application code to the container
 COPY . .
 # Build the React app
-RUN npm run build
+# RUN npm run build
 # Use an official Nginx runtime as a parent image
 FROM nginx:1.21.0-alpine
 # Copy the ngnix.conf to the container
@@ -18,6 +18,6 @@ COPY /nginx/default.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/build /usr/share/nginx/html
 
 # Expose port 3000 for Nginx
-EXPOSE 3000
+EXPOSE 8000
 # Start Nginx when the container starts
 CMD ["nginx", "-g", "daemon off;"]
