@@ -15,14 +15,17 @@
     padding-left:80px !important;
     padding-right:80px !important;
     background-color: transparent;
-    transition: background-color 0.3s ease;
 }
 
-.navbar.scrolled-up {
+/* Default transparent background */
+.navbar-collapse {
+    background-color: transparent;
+}
+
+/* White background when expanded */
+.navbar-collapse.show {
     background-color: white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Optional for a shadow effect */
 }
-
 
 a.navbar-brand {
     color:#333333;
@@ -62,7 +65,7 @@ a.link{
     font-weight: 600;
     font-size: 14px;
     transition: background-color .425s cubic-bezier(1,.053,.25,1);
-    box-shadow: 0 2px 11px #0003;
+    /*box-shadow: 0 2px 11px #0003;*/
     margin-top:3px;
 }
 a.link:hover{
