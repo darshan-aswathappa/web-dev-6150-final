@@ -17,7 +17,7 @@ import ForgotPasswordPage from "./pages/forgot-password";
 import ResetPasswordPage from "./pages/reset-password";
 import UploadResume from "./pages/upload-resume/upload";
 import AdminViewAllUsersPage from "./pages/admin";
-import HomePage from "@/pages/home";
+import HomePage from "./pages/home";
 
 // eslint-disable-next-line react/prop-types
 const ProtectedRoute = ({ children }) => {
