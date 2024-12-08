@@ -122,7 +122,6 @@ function App() {
 							</RedirectAuthenticatedUser>
 						}
 					/>
-
                     <Route
 						path='/forgot-password'
 						element={
@@ -131,7 +130,6 @@ function App() {
                     		</RedirectAuthenticatedUser>
 						}
             		/>
-
                     <Route
 						path='/reset-password/:token'
 						element={
@@ -140,6 +138,23 @@ function App() {
                     		</RedirectAuthenticatedUser>
 						}
             		/>
+
+					<Route
+						path="/about"
+						element={
+							<ProtectedRoute>
+								<AboutPage/>
+							</ProtectedRoute>
+						}
+					/>
+					<Route
+						path="/contact"
+						element={
+							<ProtectedRoute>
+								<ContactPage/>
+							</ProtectedRoute>
+						}
+					/>
 					<Route
 						path="/admin"
 						element={
