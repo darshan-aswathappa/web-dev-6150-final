@@ -1,5 +1,7 @@
 # CourseCraft Frontend
 
+## Link to presentation: [Link to Presentation](https://docs.google.com/presentation/d/1SDteHh-049EkTBdzGtFTiBTCN8-B1CRPs7aMCUG_ejo/edit?usp=sharing)
+
 ## Overview
 
 **CourseCraft** is an LLM-based course recommendation system. 
